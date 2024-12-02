@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -47,4 +48,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    # Add this method to the User model avatar_url
+    /**
+     * Get the URL for the user's avatar.
+     *
+     * @return ?string
+     */
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url ? Storage::disk('public')->url($this->avatar_url) : null;
+    }
+
 }
