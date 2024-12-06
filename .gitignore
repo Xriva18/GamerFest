@@ -21,3 +21,23 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Ignorar archivos de configuración
+.env
+.env.*
+
+# Ignorar archivos de dependencias de Composer
+/vendor/
+
+# Ignorar directorios de almacenamiento
+/storage/
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar directorios de caché, si existen
+/bootstrap/cache/
+
+# Ignorar archivos temporales de sistema
+.DS_Store
+Thumbs.db
