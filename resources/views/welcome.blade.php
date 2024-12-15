@@ -51,6 +51,40 @@
       </div>
     </div>
   </nav>
+
+    <!-- Descripción -->
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <!-- Description Column -->
+            <div class="col-md-6 mb-4">
+                    <!-- Location -->
+                <div class="mb-3">
+                    <p class="event-location">ESPE - SEDE LATACUNGA</p>
+                </div>
+
+                <!-- Title -->
+                <div class="mb-4">
+                    <p class="event-title">Gamer Fest<br>2025</p>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-5">
+                    <p class="event-description">
+                        ¡Ven y disfruta con nosotros estos 3 días del<br>
+                        evento Gamer más grande y divertido del<br>
+                        centro del País!
+                    </p>
+                </div>
+                <!-- Register Button -->
+                <a href="#" class="btn-register">Inscríbete ya</a>
+                
+            </div>
+                <!-- Image Column -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+                <div class="fest-2-69834563de28"></div>
+            </div>
+        </div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
