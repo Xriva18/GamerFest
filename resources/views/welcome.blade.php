@@ -13,6 +13,7 @@
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/img/logo.css') }}">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -81,7 +82,7 @@
             </div>
                 <!-- Image Column -->
             <div class="col-md-6 d-flex justify-content-center align-items-center" style="height: 100%;">
-                <div class="fest-2-69834563de28"></div>
+                <div class="fest-logo"></div>
             </div>
         </div>
   </div>
