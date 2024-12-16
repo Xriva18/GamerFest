@@ -226,7 +226,7 @@
         </div>
     </div>
     <!-- Horairos -->
-    <div class="container description-container">
+    <div class="container description-container mb-5">
         <div class="mt-1 mb-4 event-title2 text-center text-md-start">
             Horarios
         </div>
@@ -414,9 +414,131 @@
         </table>
     </div>
 
+    <div class="container">
+        <div class="mt-1 mb-4 event-title2 text-center text-md-start">
+            Reglamento
+        </div>
 
+        <div class="accordion" id="reglamentoAccordion">
+            <!-- Dirección de la Sede -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        1. Dirección de la Sede
+                    </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+                    data-bs-parent="#reglamentoAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Autorizará el desarrollo del evento mediante la legalización del protocolo.</li>
+                            <li>Disertará las palabras de inauguración.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Subdirección -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        2. Subdirección
+                    </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+                    data-bs-parent="#reglamentoAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Aprobará las coordinaciones necesarias para las actividades planificadas.</li>
+                            <li>Validará la legalización del protocolo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jefatura Académica -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        3. Jefatura Académica
+                    </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+                    data-bs-parent="#reglamentoAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Supervisará las actividades previstas en el protocolo.</li>
+                            <li>Dispondrá la participación del club de música en la inauguración el 12 de junio de 2024.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Planificación y Desarrollo -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                        4. Sección de Planificación y Desarrollo
+                    </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+                    data-bs-parent="#reglamentoAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Revisará y codificará el protocolo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jefatura Administrativa y Financiera -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading5">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        5. Jefatura Administrativa y Financiera
+                    </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
+                    data-bs-parent="#reglamentoAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Proveerá apoyo administrativo y logístico para el evento.</li>
+                            <li>Autorizará el uso de instalaciones (auditorio, mesas, sillas, energía eléctrica).</li>
+                            <li>Gestionará permisos para el ingreso de empresas auspiciantes y uso de estacionamientos.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otros puntos (6 a 13) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading6">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                        6. Director de Departamento
+                    </button>
+                </h2>
+                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6"
+                    data-bs-parent="#reglamentoAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Coordinará con los docentes encargados del evento.</li>
+                            <li>Designará jueces de las distintas categorías.</li>
+                            <li>Fomentará la participación de docentes y estudiantes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
