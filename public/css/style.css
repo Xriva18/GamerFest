@@ -36,10 +36,16 @@
     color: #000000;
   }
 /*Descripcion*/
+.event-container {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en una columna */
+    gap: 0px; /* Espaciado mínimo entre las líneas */
+}
   .event-location {
     color: #0ff; /* Cian */
     font-weight: 800;
-    font-size: 25px;
+    font-size: 15px;
+    margin: 0; /* Elimina márgenes por defecto */
   }
 
   .event-title {
@@ -51,24 +57,74 @@
 
   .event-description {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.3;
     color: white;
   }
 
   .btn-register {
-    display: inline-block;
-    background: #0ff; 
+    display: flex; /* Flexbox para centrar el contenido */
+    justify-content: center;
+    align-items: center;
+    background: #0ff;
     color: #000;
-    font-size: 36px;
+    font-size: 20px;
+    height: 50px;
+    width: 200px;
     font-weight: 400;
     text-decoration: none;
-    padding: 15px 30px;
     border-radius: 40px;
-    transition: background 0.3s;
-  }
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.5);
+}
 
-  .btn-register:hover {
-    background: #00e0e0;
-  }
+.btn-register:hover {
+    background: rgb(0, 255, 255); /* Asegura que el color de fondo no cambie al pasar el mouse */
+    /*color: #fff;  Cambia el texto a blanco para mayor contraste */
+    box-shadow: 0 0 5px rgba(16, 226, 226, 0.86), 0 0 10px rgba(16, 226, 226, 0.86), 0 0 15px rgba(16, 226, 226, 0.86), 0 0 20px rgba(16, 226, 226, 0.86), 0 0 25px rgba(16, 226, 226, 0.86);
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
+}
 
+/*Cambio d ecolores logo
+
+@keyframes vhs-glitch {
+  0%, 100% {
+      filter: none;
+      transform: none;
+  }
+  10% {
+      filter: hue-rotate(30deg) brightness(1.2);
+  }
+  20% {
+      filter: hue-rotate(-30deg) contrast(1.5);
+      transform: translateX(-2px);
+  }
+  30% {
+      filter: hue-rotate(60deg) brightness(0.9);
+      transform: translateX(2px);
+  }
+  40% {
+      filter: hue-rotate(-15deg);
+  }
+  50% {
+      filter: hue-rotate(45deg) brightness(1.5);
+      transform: translateX(-1px);
+  }
+  60% {
+      filter: hue-rotate(-45deg);
+  }
+  70% {
+      transform: scale(1.01) translateY(1px);
+  }
+  80% {
+      transform: translateX(1px);
+  }
+  90% {
+      transform: scale(1.02) translateY(-1px);
+  }
+}
+
+.vhs-effect {
+  animation: vhs-glitch 5s infinite;
+  transition: transform 1s ease-in-out;
+}*/

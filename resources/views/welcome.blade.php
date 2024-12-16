@@ -59,16 +59,12 @@
 
     <!-- Descripción -->
     <div class="container">
-        <div class=" row align-items-center" style="height:100px;">
+        <div class=" row align-items-center mt-3" style="height:100px;">
             <!-- Description Column -->
             <div class="col-md-5 mb-4">
                 <!-- Location -->
-                <div class="mb-3">
+                <div class="event-container">
                     <p class="event-location">ESPE - SEDE LATACUNGA</p>
-                </div>
-
-                <!-- Title -->
-                <div class="mb-4">
                     <p class="event-title">Gamer Fest<br>2025</p>
                 </div>
 
@@ -81,13 +77,13 @@
                     </p>
                 </div>
                 <!-- Register Button -->
-                <a href="#" class="btn-register">Inscríbete ya</a>
+                <a href="#" class="btn-register">Inscríbete ya!</a>
 
             </div>
             <!-- Image Column -->
-            <div class="col-md-7 d-flex justify-content-center align-items-center">
-                <img src="{{ asset('img/logo-fest.png') }}" alt="Logo Gamer Fest" class="pt-5 img-fluid h-100 w-100"
-                    style="object-fit: contain;">
+            <div class="col-md-7 d-flex" style="transform: translateX(50px);">
+                <img src="{{ asset('img/logo-fest.png') }}" alt="Logo Gamer Fest"
+                    class="mt-2 pt-3 img-fluid h-100 w-100 vhs-effect" style="object-fit: contain; ">
             </div>
         </div>
     </div>
