@@ -90,7 +90,7 @@
     </div>
     <!-- Juegos indvidules -->
     <div class="container description-container">
-        <div class="mt-5 mb-4 event-title2 text-center text-md-start">
+        <div class="mt-5 mb-5 event-title2 text-center text-md-start">
             Juegos individules
         </div>
         <div class="row justify-content-center">
@@ -148,7 +148,75 @@
 
         </div>
     </div>
-
+    <!-- Juegos Grupales -->
+    <div class="container description-container">
+        <div class="mt-1 mb-5 event-title2 text-center text-md-start">
+            Juegos Grupales
+        </div>
+        <div class="row justify-content-center">
+            <!-- Juego 1 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosGrupales/dota2.jpg') }}" class="card-img-top" alt="Dota 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Dota 2</h5>
+                        <p class="card-text">5,00 $</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Juego 2 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosGrupales/league.jpg') }}" class="card-img-top"
+                        alt="League of Legends">
+                    <div class="card-body">
+                        <h5 class="card-title">League of Legends</h5>
+                        <p class="card-text">4,50 $</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Juego 3 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosGrupales/fornite.jpg') }}" class="card-img-top" alt="Fornite">
+                    <div class="card-body">
+                        <h5 class="card-title">Fornite</h5>
+                        <p class="card-text">3,50 $</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Juego 4 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosGrupales/valorant.jpg') }}" class="card-img-top" alt="Valorant">
+                    <div class="card-body">
+                        <h5 class="card-title">Valorant</h5>
+                        <p class="card-text">4,00 $</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Juego 5 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosGrupales/clash.jpg') }}" class="card-img-top" alt="Clash Royale">
+                    <div class="card-body">
+                        <h5 class="card-title">Clash Royale</h5>
+                        <p class="card-text">2,50 $</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Juego 6 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosGrupales/free.jpg') }}" class="card-img-top" alt="Free Fire">
+                    <div class="card-body">
+                        <h5 class="card-title">Free Fire</h5>
+                        <p class="card-text">3,00 $</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
