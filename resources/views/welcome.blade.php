@@ -421,12 +421,12 @@
             <!-- Dirección de la Sede -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading1">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                         1. Dirección de la Sede
                     </button>
                 </h2>
-                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1"
                     data-bs-parent="#reglamentoAccordion">
                     <div class="accordion-body">
                         <ul>

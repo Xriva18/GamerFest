@@ -228,10 +228,10 @@ th {
 
 /* Acordeón */
 .accordion-item {
-  background-color: #000; /* Fondo negro */
-  border: 1px solid #00FFFF; /* Borde cian */
+  background-color: rgba(0, 255, 255, 0); /* Fondo transparente */
+  border: none; /* Sin borde */
   border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(0, 255, 255, 0.2), 0 -2px 4px rgba(0, 255, 255, 0.2); /* Efecto de resplandor */
+  /* box-shadow: 0 2px 4px rgba(0, 255, 255, 0.2), 0 -2px 4px rgba(0, 255, 255, 0.2); /* Efecto de resplandor */
   margin-bottom: 20px; /* Espaciado entre items */
 }
 
@@ -239,17 +239,29 @@ th {
   font-family: 'Poppins', sans-serif; /* Fuente Poppins */
   font-size: 16px; /* Tamaño del texto */
   font-weight: 700; /* Negrita */
-  color: #00FFFF; /* Texto cian */
-  background-color: #000; /* Fondo negro */
-  border: none; /* Sin bordes */
+  color: #ffffff; /* Texto blanco */
+  background-color: rgba(255, 255, 255, 0.09); /* Fondo semi-transparente */
+  border: none !important; /* Sin bordes */
   border-radius: 10px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+  box-shadow: 0 0 5px #00FFFF; /* Resplandor alrededor de la tabla */
+  background-image: none; /* Elimina cualquier imagen de fondo predeterminada */
+  /* transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.accordion-button::after {
+  display: none; /* Elimina la flecha */
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 5px #00FFFF; /* Resplandor alrededor de la tabla */
+  outline: none; /* Sin borde de enfoque */
 }
 
 .accordion-button:hover {
-  background-color: rgba(0, 255, 255, 0.1); /* Fondo cian transparente al pasar el mouse */
-  color: #FFF; /* Texto blanco */
+  /*background-color: rgba(255, 255, 255, 0.16); /* Fondo semi-transparente al pasar el mouse */
+  color: #00FFFF; /* Texto cian */
   transform: scale(1.02); /* Efecto de zoom */
+  box-shadow: 0 0 15px #00FFFF; 
 }
 
 .accordion-button:not(.collapsed) {
@@ -259,10 +271,10 @@ th {
 
 .accordion-body {
   font-family: 'Poppins', sans-serif; /* Fuente Poppins */
-  color: #FFF; /* Texto blanco */
+  color: #FFFFFF; /* Texto blanco */
   background-color: #000; /* Fondo negro */
   padding: 15px; /* Espaciado interno */
-  border-top: 1px solid #00FFFF; /* Línea divisoria superior */
+  border-top: none; /* Sin línea divisoria superior */
 }
 
 .accordion-body ul {
@@ -273,12 +285,10 @@ th {
 .accordion-body li {
   margin-bottom: 10px; /* Espaciado entre elementos */
   padding: 5px 10px; /* Espaciado interno */
-  border-left: 3px solid #00FFFF; /* Línea de énfasis a la izquierda */
+  border-left: 3px solid #ffffff; /* Línea de énfasis a la izquierda */
   font-size: 14px; /* Tamaño del texto */
-  transition: transform 0.3s ease; /* Transición suave al pasar el mouse */
+  transition: transform 0.3s ease, color 0.3s ease; /* Transición suave al pasar el mouse */
 }
 
-.accordion-body li:hover {
-  transform: translateX(5px); /* Desplazamiento al pasar el mouse */
-  color: #00FFFF; /* Color cian al pasar el mouse */
-}
+
+
