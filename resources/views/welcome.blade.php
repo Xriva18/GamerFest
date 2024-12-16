@@ -90,63 +90,66 @@
     </div>
     <!-- Juegos indvidules -->
     <div class="container description-container">
-        <div class="align-items-center mt-5 mb-5 event-title2">
+        <div class="mt-5 mb-4 event-title2 text-center text-md-start">
             Juegos individules
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+            <!-- Juego 1 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosIndividuales/mortal.jpg') }}" class="card-img-top" alt="mortal">
                     <div class="card-body">
-                        <h5 class="card-title">Juego 1</h5>
-                        <p class="card-text">Descripción del juego 1</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <h5 class="card-title">Mortal Kombat 1</h5>
+                        <p class="card-text">5,00 $</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+            <!-- Juego 2 -->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosIndividuales/fifa.jpg') }}" class="card-img-top" alt="fifa">
                     <div class="card-body">
-                        <h5 class="card-title">Juego 1</h5>
-                        <p class="card-text">Descripción del juego 1</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <h5 class="card-title">FIFA 2025</h5>
+                        <p class="card-text">3,50 $</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+            <!-- Juego  3-->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosIndividuales/dragon.jpg') }}" class="card-img-top" alt="fifa">
                     <div class="card-body">
-                        <h5 class="card-title">Juego 1</h5>
-                        <p class="card-text">Descripción del juego 1</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <h5 class="card-title">Dragon Ball Z BT3</h5>
+                        <p class="card-text">4,00 $</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+            <!-- Juego  4-->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosIndividuales/dance.jpg') }}" class="card-img-top" alt="Just Dance">
                     <div class="card-body">
-                        <h5 class="card-title">Juego 1</h5>
-                        <p class="card-text">Descripción del juego 1</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <h5 class="card-title">Just Dance</h5>
+                        <p class="card-text">3,00 $</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+            <!-- Juego 5-->
+            <div class="col-md-4 mb-3 d-flex justify-content-center">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/JuegosIndividuales/mario.jpg') }}" class="card-img-top"
+                        alt="Mario Kart 8 Deluxe">
                     <div class="card-body">
-                        <h5 class="card-title">Juego 1</h5>
-                        <p class="card-text">Descripción del juego 1</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <h5 class="card-title">Mario Kart 8 Deluxe</h5>
+                        <p class="card-text">4,50 $</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
