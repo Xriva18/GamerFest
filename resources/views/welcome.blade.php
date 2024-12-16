@@ -59,9 +59,9 @@
 
     <!-- Descripción -->
     <div class="container">
-        <div class=" row align-items-center mt-3" style="height:100px;">
+        <div class="row align-items-center mt-3">
             <!-- Description Column -->
-            <div class="col-md-5 mb-4">
+            <div class="col-md-5 mb-4 text-center text-md-start">
                 <!-- Location -->
                 <div class="event-container">
                     <p class="event-location">ESPE - SEDE LATACUNGA</p>
@@ -77,17 +77,76 @@
                     </p>
                 </div>
                 <!-- Register Button -->
-                <a href="#" class="btn-register">Inscríbete ya!</a>
-
+                <div class="d-flex justify-content-center justify-content-md-start">
+                    <a href="#" class="btn-register">Inscríbete ya!</a>
+                </div>
             </div>
             <!-- Image Column -->
-            <div class="col-md-7 d-flex" style="transform: translateX(50px);">
+            <div class="col-md-7 d-flex justify-content-center">
                 <img src="{{ asset('img/logo-fest.png') }}" alt="Logo Gamer Fest"
-                    class="mt-2 pt-3 img-fluid h-100 w-100 vhs-effect" style="object-fit: contain; ">
+                    class="mt-2 pt-3 img-fluid h-100 w-100 vhs-effect" style="object-fit: contain;">
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Juegos indvidules -->
+    <div class="container description-container">
+        <div class="align-items-center mt-5 mb-5 event-title2">
+            Juegos individules
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego 1</h5>
+                        <p class="card-text">Descripción del juego 1</p>
+                        <a href="#" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego 1</h5>
+                        <p class="card-text">Descripción del juego 1</p>
+                        <a href="#" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego 1</h5>
+                        <p class="card-text">Descripción del juego 1</p>
+                        <a href="#" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego 1</h5>
+                        <p class="card-text">Descripción del juego 1</p>
+                        <a href="#" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('img/juego1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Juego 1</h5>
+                        <p class="card-text">Descripción del juego 1</p>
+                        <a href="#" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -54,6 +54,12 @@
     line-height: 1;
     color: white;
   }
+  .event-title2 {
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1;
+    color: white;
+  }
 
   .event-description {
     font-weight: 400;
