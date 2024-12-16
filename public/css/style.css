@@ -1,40 +1,84 @@
 .navbar-brand {
-    font-family: 'Poppins', sans-serif;
-    font-size: 29px;
-    font-weight: 700;
-    color: #ffffff !important;
-  }
+  font-family: 'Poppins', sans-serif;
+  font-size: 29px;
+  font-weight: 700;
+}
 
-  .navbar {
-    justify-content: center; /* Centra los elementos del navbar */
-  }
-  .navbar-nav {
-    display: flex;
-    gap: 15px; /* Espaciado entre los elementos */
-  }
+.navbar {
+  justify-content: center; /* Centra los elementos del navbar */
+}
 
-  .navbar-nav.mx-auto {
-    padding-left: 50px; /* Ajusta este valor para centrar */
-  }
+.navbar-nav {
+  display: flex;
+  gap: 15px; /* Espaciado entre los elementos */
+}
+
+.navbar-nav.mx-auto {
+  padding-left: 50px; /* Ajusta este valor para centrar */
+}
+
+/* Estilos para los botones o links del navbar */
+.nav-link {
+  font-family: 'Poppins', sans-serif;
   
-  .btn-login {
-    background-color: #00FFFF;
-    color: #000000;
-    font-size: 13 px;
-    border: none;
-    border-radius: 6px;
-    width: 80px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    margin-left: auto;
-  }
-  .btn-login:hover {
-    background-color: #00e0e0;
-    color: #000000;
-  }
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: #00FFFF; /* Fondo cian al pasar el mouse */
+  color: #000; /* Texto negro para contraste */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+/* Botón de login */
+.btn-login {
+  background-color: #00FFFF;
+  color: #000000;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.btn-login:hover {
+  background-color: #00FFFF; /* Fondo cian al pasar el mouse */
+  color: #000; /* Texto negro para contraste */
+  transform: scale(1.1); /* Efecto de zoom */
+}
+
+/* Estilos para el dropdown */
+.dropdown-menu {
+  background-color: #000; /* Fondo negro */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+}
+
+.dropdown-item {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  color: #fff; /* Texto blanco */
+  font-size: 13px; /* Tamaño de fuente */
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados para los elementos */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animación al pasar el mouse */
+}
+
+.dropdown-item:hover {
+  background-color: #00FFFF; /* Fondo cian al pasar el mouse */
+  color: #000; /* Texto negro */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
 /*Descripcion*/
 .event-container {
     display: flex;
@@ -158,4 +202,26 @@
 
 .custom-card .card-text {
   opacity: 0.7; /* Reduce la opacidad en un 90% */
+}
+
+/*table*/
+table {
+  border-collapse: collapse; /* Para unir bordes de celdas */
+  border: 1px solid #00FFFF; /* Borde principal */
+  box-shadow: 0 0 10px #00FFFF; /* Resplandor alrededor de la tabla */
+}
+
+th, td {
+  color: #FFFFFF;             /* Texto en blanco */
+  border: 1px solid #00FFFF;  /* Borde de cada celda */
+  padding: 5px;
+}
+
+th {
+  text-align: center; /* Centra el texto */
+  background-color: rgba(0, 255, 255, 0.256);
+}
+
+.border-light{
+  box-shadow: 0px 5px 5px 0px #00ffff82;
 }

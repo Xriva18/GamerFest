@@ -38,8 +38,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <!-- Menú centrado -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Juegos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Juegos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#juegos-individuales">Individuales</a></li>
+                            <li><a class="dropdown-item" href="#juegos-grupales">Grupales</a></li>
+                        </ul>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Horarios</a>
@@ -216,6 +224,198 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Horairos -->
+    <div class="container description-container">
+        <div class="mt-1 mb-4 event-title2 text-center text-md-start">
+            Horarios
+        </div>
+
+        <table class="m-3">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Actividad</th>
+                    <th>Lugar</th>
+                    <th>Responsable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- DIA 1 - 21/06/2025-->
+                <tr>
+                    <td rowspan="4"class="border-light">21/06/2025</td>
+                    <td rowspan="4"class="border-light">17:00-22:00</td>
+                    <td>Desarrollo del Torneo Dota 2</td>
+                    <td rowspan="4" class="border-light">VIRTUAL</td>
+                    <td>Kenneth Toapanta</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del Torneo League of Legends</td>
+                    <td>Alexander Quiñonez</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del Torneo Fornite</td>
+                    <td>Brandon Sangoluisa</td>
+                </tr>
+                <tr>
+                    <td class="border-light">Desarrollo del Torneo Valorant</td>
+                    <td class="border-light">Joselyn García</td>
+                </tr>
+
+                <!-- DIA 2 - 22/06/2025-->
+                <tr>
+                    <td rowspan="18" class="border-light">22/06/2025</td>
+                    <td>8:00-8:30</td>
+                    <td>Inauguración Gamer Fest 2025</td>
+                    <td>Planta Baja (Pileta)</td>
+                    <td>Ing. Gonzalo Borja, Andrea Lascano</td>
+                </tr>
+
+                <!-- Bloque 9:00-14:00 (12 actividades) -->
+                <tr>
+                    <td rowspan="12">9:00-14:00</td>
+                    <td>Exposición Evolución de Videojuegos / Línea de tiempo, Juegos desarrollados</td>
+                    <td rowspan="2">Planta Baja (Pileta)</td>
+                    <td>Ing. Marcelo Álvarez</td>
+                </tr>
+                <tr>
+                    <td>Concurso de Desarrollo de Videojuegos</td>
+                    <td>Ing. Marcelo Álvarez, Anshela Castillo</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del torneo Just Dance</td>
+                    <td>A-410</td>
+                    <td>Ivan Solís</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del torneo Clash Royale</td>
+                    <td>A-409</td>
+                    <td>Eduardo Carrera</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del torneo Dragon Ball Z Budokai Tenkaichi 3</td>
+                    <td>A-408</td>
+                    <td>Jorge Armas</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del torneo Super Smash Bros</td>
+                    <td>A-403</td>
+                    <td>Kevin Armas</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del torneo Free Fire</td>
+                    <td>A-407</td>
+                    <td>Dennis Caisa</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del torneo FIFA 2022</td>
+                    <td>A-406</td>
+                    <td>William Jacome</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del Torneo Mario Kart</td>
+                    <td>A-405</td>
+                    <td>Mateo Enríquez</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del Torneo Counter Strike (Casual)</td>
+                    <td>Laboratorio de Ingeniería de Software</td>
+                    <td>Joan Velazco</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del Torneo Mortal Kombat (Casual)</td>
+                    <td rowspan="2">Aula-403</td>
+                    <td>Jordan Talahua</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo del Torneo Rocket League (Casual)</td>
+                    <td>Elías Tellería</td>
+                </tr>
+
+                <tr>
+                    <td>13:00-13:30</td>
+                    <td>Presentación de grupo Folklórico "Likanantay"</td>
+                    <td>Planta Baja (Pileta)</td>
+                    <td>Ing. Fabian Montaluisa</td>
+                </tr>
+
+                <!-- Bloque 17:00-22:00 (4 actividades) -->
+                <tr>
+                    <td rowspan="4" class="border-light">17:00-22:00</td>
+                    <td>Desarrollo de Semi-Finales y Finales del Torneo Dota 2</td>
+                    <td rowspan="4" class="border-light">VIRTUAL</td>
+                    <td>Kenneth Toapanta</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Semi-Finales y Finales del League of Legends</td>
+                    <td>Alexander Quiñonez</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Semi-Finales y Finales del Torneo Fornite</td>
+                    <td>Brandon Sangoluisa</td>
+                </tr>
+                <tr>
+                    <td class="border-light">Desarrollo de Semi-Finales y Finales del Torneo Valorant</td>
+                    <td class="border-light">Joselyn García</td>
+                </tr>
+
+                <!-- DIA 3 - 23/06/2025(9 actividades) -->
+                <tr>
+                    <td rowspan="9">23/06/2025</td>
+                    <!-- Bloque 9:00-11:00 (8 filas, la última del bloque es diferente) -->
+                    <td rowspan="8">9:00-11:00</td>
+                    <td>Desarrollo de Finales del torneo Just Dance</td>
+                    <td>A-401</td>
+                    <td>Ivan Solís</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Finales del Clash Royale</td>
+                    <td>A-402</td>
+                    <td>Eduardo Carrera</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Finales del torneo Dragon Ball Z Budokai Tenkaichi 3</td>
+                    <td>A-404</td>
+                    <td>Jorge Armas</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Finales del torneo Super Smash Bros</td>
+                    <td>A-405</td>
+                    <td>Kevin Armas</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Finales del torneo Free Fire</td>
+                    <td>A-403</td>
+                    <td>Dennis Caisa</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Finales del torneo FIFA 2022</td>
+                    <td>A-406</td>
+                    <td>William Jácome</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Finales del Torneo Mario Kart</td>
+                    <td>A-407</td>
+                    <td>Mateo Enríquez</td>
+                </tr>
+                <tr>
+                    <td>Desarrollo de Concurso de Cosplay</td>
+                    <td>Planta Baja (Campus Guillermo Rodriguez Lara), Segundo Piso (Departamento de Software)</td>
+                    <td>Ing. Gonzalo Borja</td>
+                </tr>
+                <tr>
+                    <td>11:30-13:00</td>
+                    <td>Premiación y Clausura Gamer Fest 2025</td>
+                    <td>Auditorio A</td>
+                    <td>Ing. Gonzalo Borja</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
