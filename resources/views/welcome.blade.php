@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GamerFest</title>
-
+    <!-- Agregar el favicon -->
+    <link rel="icon" href="{{ asset('img/logo-fest.svg') }}" type="image/x-icon">
+    <!-- tipografia-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,11 +18,7 @@
 
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body class="bg-black">
@@ -91,7 +89,7 @@
             </div>
             <!-- Image Column -->
             <div class="col-md-7 d-flex justify-content-center">
-                <img src="{{ asset('img/logo-fest.png') }}" alt="Logo Gamer Fest"
+                <img src="{{ asset('img/FEST2.svg') }}" alt="Logo Gamer Fest"
                     class="mt-2 pt-3 img-fluid h-100 w-100 vhs-effect" style="object-fit: contain;">
             </div>
         </div>
