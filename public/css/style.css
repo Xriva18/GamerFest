@@ -290,5 +290,6 @@ th {
   transition: transform 0.3s ease, color 0.3s ease; /* Transición suave al pasar el mouse */
 }
 
-
-
+html {
+  scroll-behavior: smooth;
+}

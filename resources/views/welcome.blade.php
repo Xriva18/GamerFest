@@ -48,13 +48,13 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Horarios</a>
+                        <a class="nav-link" href="#horarios">Horarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reglamento</a>
+                        <a class="nav-link" href="#reglamento">Reglamento</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Austiciantes</a>
+                        <a class="nav-link" href="#austiciante">Austiciantes</a>
                     </li>
                 </ul>
                 <!-- Botón Login alineado a la derecha -->
@@ -95,7 +95,7 @@
         </div>
     </div>
     <!-- Juegos indvidules -->
-    <div class="container description-container">
+    <div class="pt-2 container description-container" id = "juegos-individuales">
         <div class="mt-5 mb-5 event-title2 text-center text-md-start">
             Juegos individules
         </div>
@@ -155,7 +155,7 @@
         </div>
     </div>
     <!-- Juegos Grupales -->
-    <div class="container description-container">
+    <div class="pt-2 container description-container pt-2" id="juegos-grupales">
         <div class="mt-1 mb-5 event-title2 text-center text-md-start">
             Juegos Grupales
         </div>
@@ -224,7 +224,7 @@
         </div>
     </div>
     <!-- Horairos -->
-    <div class="container description-container mb-5">
+    <div class="pt-2 container description-container mb-5 " id="horarios">
         <div class="mt-1 mb-4 event-title2 text-center text-md-start">
             Horarios
         </div>
@@ -412,7 +412,7 @@
         </table>
     </div>
 
-    <div class="container">
+    <div class="pt-2 container" id="reglamento">
         <div class="mt-1 mb-4 event-title2 text-center text-md-start">
             Reglamento
         </div>
