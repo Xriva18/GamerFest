@@ -573,6 +573,15 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container text-center">
+            <span class="text-white">© 2024 Todos los derechos reservados.
+                <a href="#" class="footer-link">Términos de servicio</a> |
+                <a href="#" class="footer-link">Política de privacidad</a>
+            </span>
+        </div>
+    </footer>
+
 </body>
 
 </html>

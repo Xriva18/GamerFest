@@ -306,4 +306,21 @@ html {
   transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
 }
 
-  
+.footer {
+  background-color: #000; /* Fondo negro */
+  padding: 15px 0;
+}
+
+.footer-link {
+  color: #fff; /* Texto blanco */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #00FFFF; /* Cian al pasar el mouse */
+}
+
+.text-white {
+  color: #fff; /* Asegura que el texto principal es blanco */
+}
