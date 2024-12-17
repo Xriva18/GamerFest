@@ -1,0 +1,326 @@
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.navbar {
+  justify-content: center; /* Centra los elementos del navbar */
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 15px; /* Espaciado entre los elementos */
+}
+
+.navbar-nav.mx-auto {
+  padding-left: 50px; /* Ajusta este valor para centrar */
+}
+
+/* Estilos para los botones o links del navbar */
+.nav-link {
+  font-family: 'Poppins', sans-serif;
+  
+  font-size: 13px;
+  padding: 10px 15px;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: #00FFFF; /* Fondo cian al pasar el mouse */
+  color: #000; /* Texto negro para contraste */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+/* Botón de login */
+.btn-login {
+  background-color: #00FFFF;
+  color: #000000;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.btn-login:hover {
+  background-color: #00FFFF; /* Fondo cian al pasar el mouse */
+  color: #000; /* Texto negro para contraste */
+  transform: scale(1.1); /* Efecto de zoom */
+}
+
+/* Estilos para el dropdown */
+.dropdown-menu {
+  background-color: #000; /* Fondo negro */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+}
+
+.dropdown-item {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  color: #fff; /* Texto blanco */
+  font-size: 13px; /* Tamaño de fuente */
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados para los elementos */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animación al pasar el mouse */
+}
+
+.dropdown-item:hover {
+  background-color: #00FFFF; /* Fondo cian al pasar el mouse */
+  color: #000; /* Texto negro */
+  transform: scale(1.05); /* Efecto de zoom */
+}
+
+/*Descripcion*/
+.event-container {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en una columna */
+    gap: 0px; /* Espaciado mínimo entre las líneas */
+}
+  .event-location {
+    color: #0ff; /* Cian */
+    font-weight: 800;
+    font-size: 15px;
+    margin: 0; /* Elimina márgenes por defecto */
+  }
+
+  .event-title {
+    font-weight: 800;
+    font-size: 68px;
+    line-height: 1;
+    color: white;
+  }
+  .event-title2 {
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1;
+    color: white;
+  }
+
+  .event-description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.3;
+    color: white;
+  }
+
+  .btn-register {
+    display: flex; /* Flexbox para centrar el contenido */
+    justify-content: center;
+    align-items: center;
+    background: #0ff;
+    color: #000;
+    font-size: 20px;
+    height: 50px;
+    width: 200px;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.btn-register:hover {
+    background: rgb(0, 255, 255); /* Asegura que el color de fondo no cambie al pasar el mouse */
+    /*color: #fff;  Cambia el texto a blanco para mayor contraste */
+    box-shadow: 0 0 5px rgba(16, 226, 226, 0.86), 0 0 10px rgba(16, 226, 226, 0.86), 0 0 15px rgba(16, 226, 226, 0.86), 0 0 20px rgba(16, 226, 226, 0.86), 0 0 25px rgba(16, 226, 226, 0.86);
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
+}
+
+/*Cambio d ecolores logo*/
+
+@keyframes vhs-glitch {
+  0%, 100% {
+      filter: none;
+      transform: none;
+  }
+  10% {
+      filter: hue-rotate(30deg) brightness(1.2);
+  }
+  20% {
+      filter: hue-rotate(-30deg) contrast(1.5);
+      transform: translateX(-2px);
+  }
+  30% {
+      filter: hue-rotate(60deg) brightness(0.9);
+      transform: translateX(2px);
+  }
+  40% {
+      filter: hue-rotate(-15deg);
+  }
+  50% {
+      filter: hue-rotate(45deg) brightness(1.5);
+      transform: translateX(-1px);
+  }
+  60% {
+      filter: hue-rotate(-45deg);
+  }
+  70% {
+      transform: scale(1.01) translateY(1px);
+  }
+  80% {
+      transform: translateX(1px);
+  }
+  90% {
+      transform: scale(1.02) translateY(-1px);
+  }
+}
+
+.vhs-effect {
+  animation: vhs-glitch 5s infinite;
+  transition: transform 1s ease-in-out;
+}
+/*card*/
+.custom-card {
+  background-color: #000; /* Fondo negro */
+  height: auto; /* Reduce el tamaño en un 20% */
+  width: 75%; /* Reduce el ancho */
+}
+
+.custom-card .card-img-top {
+  border-radius: 15px; /* Bordes redondos */
+  box-shadow: 0 2px 4px rgba(0, 255, 255, 0.1), 0 -2px 4px rgba(0, 255, 255, 0.1), 2px 0 4px rgba(0, 255, 255, 0.1), -2px 0 4px rgba(0, 255, 255, 0.1);
+}
+
+.custom-card .card-body {
+  text-align: center; /* Centra el texto del título y descripción */
+}
+
+.custom-card .card-title,
+.custom-card .card-text {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  color: #fff; /* El texto en blanco resalta sobre el fondo negro */
+}
+
+.custom-card .card-text {
+  opacity: 0.7; /* Reduce la opacidad en un 90% */
+}
+
+/*table*/
+table {
+  border-collapse: collapse; /* Para unir bordes de celdas */
+  border: 1px solid #00FFFF; /* Borde principal */
+  box-shadow: 0 0 10px #00FFFF; /* Resplandor alrededor de la tabla */
+}
+
+th, td {
+  color: #FFFFFF;             /* Texto en blanco */
+  border: 1px solid #00FFFF;  /* Borde de cada celda */
+  padding: 5px;
+}
+
+th {
+  text-align: center; /* Centra el texto */
+  background-color: rgba(0, 255, 255, 0.256);
+}
+
+.border-light{
+  box-shadow: 0px 5px 5px 0px #00ffff82;
+}
+
+/* Acordeón */
+.accordion-item {
+  background-color: rgba(0, 255, 255, 0); /* Fondo transparente */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  /* box-shadow: 0 2px 4px rgba(0, 255, 255, 0.2), 0 -2px 4px rgba(0, 255, 255, 0.2); /* Efecto de resplandor */
+  margin-bottom: 20px; /* Espaciado entre items */
+}
+
+.accordion-button {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-size: 16px; /* Tamaño del texto */
+  font-weight: 700; /* Negrita */
+  color: #ffffff; /* Texto blanco */
+  background-color: rgba(255, 255, 255, 0.09); /* Fondo semi-transparente */
+  border: none !important; /* Sin bordes */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 0 5px #00FFFF; /* Resplandor alrededor de la tabla */
+  background-image: none; /* Elimina cualquier imagen de fondo predeterminada */
+  /* transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.accordion-button::after {
+  display: none; /* Elimina la flecha */
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 5px #00FFFF; /* Resplandor alrededor de la tabla */
+  outline: none; /* Sin borde de enfoque */
+}
+
+.accordion-button:hover {
+  /*background-color: rgba(255, 255, 255, 0.16); /* Fondo semi-transparente al pasar el mouse */
+  color: #00FFFF; /* Texto cian */
+  transform: scale(1.02); /* Efecto de zoom */
+  box-shadow: 0 0 15px #00FFFF; 
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #00FFFF; /* Fondo cian al estar activo */
+  color: #000; /* Texto negro */
+}
+
+.accordion-body {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  color: #FFFFFF; /* Texto blanco */
+  background-color: #000; /* Fondo negro */
+  padding: 15px; /* Espaciado interno */
+  border-top: none; /* Sin línea divisoria superior */
+}
+
+.accordion-body ul {
+  list-style: none; /* Sin viñetas */
+  padding-left: 0; /* Sin indentación */
+}
+
+.accordion-body li {
+  margin-bottom: 10px; /* Espaciado entre elementos */
+  padding: 5px 10px; /* Espaciado interno */
+  border-left: 3px solid #ffffff; /* Línea de énfasis a la izquierda */
+  font-size: 14px; /* Tamaño del texto */
+  transition: transform 0.3s ease, color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.austiciante-brillo:hover {
+  filter: drop-shadow(0 0 1px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 2px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 3px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 4px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 5px rgba(16, 226, 226, 0.3));
+}
+
+.escala-austiciante:hover{  
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
+}
+
+.footer {
+  background-color: #000; /* Fondo negro */
+  padding: 15px 0;
+}
+
+.footer-link {
+  color: #fff; /* Texto blanco */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #00FFFF; /* Cian al pasar el mouse */
+}
+
+.text-white {
+  color: #fff; /* Asegura que el texto principal es blanco */
+}
