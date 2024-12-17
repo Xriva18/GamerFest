@@ -547,7 +547,7 @@
                     <img src="{{ asset('img/austiciante/austiciante1.svg') }}" class="img-fluid austiciante-brillo"
                         alt="Auspiciante 1">
                     <div class="card-body">
-                        <h5 class="card-title">Auspiciante 1</h5>
+                        <h5 class="card-title">NIDAUELLIR!</h5>
                     </div>
                 </div>
             </div>
@@ -556,7 +556,7 @@
                     <img src="{{ asset('img/austiciante/austiciante2.svg') }}" class="img-fluid austiciante-brillo"
                         alt="Auspiciante 2">
                     <div class="card-body">
-                        <h5 class="card-title">Auspiciante 2</h5>
+                        <h5 class="card-title">Speedy Internet</h5>
                     </div>
                 </div>
             </div>
@@ -565,7 +565,7 @@
                     <img src="{{ asset('img/austiciante/austiciante3.svg') }}" class="img-fluid austiciante-brillo"
                         alt="Auspiciante 3">
                     <div class="card-body">
-                        <h5 class="card-title">Auspiciante 3</h5>
+                        <h5 class="card-title">RV Importaciones</h5>
                     </div>
                 </div>
             </div>
