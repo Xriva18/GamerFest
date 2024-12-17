@@ -537,6 +537,41 @@
         </div>
     </div>
 
+    <div class="pt-2 container" id="auspiciante">
+        <div class="mt-1 mb-4 event-title2 text-center text-md-start">
+            Austiciantes
+        </div>
+        <div class="row p-3 justify-content-center">
+            <div class="col-md-3 mb-3 d-flex justify-content-center escala-austiciante">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/austiciante/austiciante1.svg') }}" class="img-fluid austiciante-brillo"
+                        alt="Auspiciante 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Auspiciante 1</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 d-flex justify-content-center escala-austiciante">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/austiciante/austiciante2.svg') }}" class="img-fluid austiciante-brillo"
+                        alt="Auspiciante 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Auspiciante 2</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3 d-flex justify-content-center escala-austiciante">
+                <div class="card custom-card">
+                    <img src="{{ asset('img/austiciante/austiciante3.svg') }}" class="img-fluid austiciante-brillo"
+                        alt="Auspiciante 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Auspiciante 3</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

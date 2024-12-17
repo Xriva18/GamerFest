@@ -293,3 +293,17 @@ th {
 html {
   scroll-behavior: smooth;
 }
+
+.austiciante-brillo:hover {
+  filter: drop-shadow(0 0 1px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 2px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 3px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 4px rgba(16, 226, 226, 0.3))
+          drop-shadow(0 0 5px rgba(16, 226, 226, 0.3));
+}
+
+.escala-austiciante:hover{  
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
+}
+
+  
