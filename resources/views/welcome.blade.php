@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.main') <!-- Usa el layout base -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GamerFest</title>
-    <!-- Agregar el favicon -->
-    <link rel="icon" href="{{ asset('img/logo-fest.svg') }}" type="image/x-icon">
-    <!-- tipografia-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('title', 'Inicio') <!-- Cambia el título para esta vista -->
 
-    <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-</head>
-
-<body class="bg-black">
+@section('content') <!-- Define el contenido que irá en la sección content -->
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -173,8 +154,7 @@
             <!-- Juego 2 -->
             <div class="col-md-4 mb-3 d-flex justify-content-center">
                 <div class="card custom-card">
-                    <img src="{{ asset('img/JuegosGrupales/league.jpg') }}" class="card-img-top"
-                        alt="League of Legends">
+                    <img src="{{ asset('img/JuegosGrupales/league.jpg') }}" class="card-img-top" alt="League of Legends">
                     <div class="card-body">
                         <h5 class="card-title">League of Legends</h5>
                         <p class="card-text">4,50 $</p>
@@ -582,6 +562,4 @@
         </div>
     </footer>
 
-</body>
-
-</html>
+@endsection

@@ -20,4 +20,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/universidades', [UniversidadController::class, 'index'])->name('universidades.index');
 
+
+Route::get('/inscripcion', function () {
+    return view('inscripcion');
+})->name('inscripcion');
+
+
 require __DIR__ . '/auth.php';
