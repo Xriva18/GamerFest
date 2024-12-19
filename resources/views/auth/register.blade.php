@@ -21,8 +21,9 @@
         <!-- Universidad -->
         <div class="mt-4">
             <x-input-label for="universidad" :value="__('Universidad')" />
-            <x-text-input id="universidad" class="block mt-1 w-full" type="text" name="universidad" :value="old('universidad')"
-                autocomplete="universidad" />
+            <select id="universidad" name="universidad" class="block mt-1 w-full">
+                <option value="">{{ __('Selecciona una universidad') }}</option>
+            </select>
             <x-input-error :messages="$errors->get('universidad')" class="mt-2" />
         </div>
 
@@ -60,5 +61,29 @@
                 {{ __('Inscribirse') }}
             </x-primary-button>
         </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    const response = await fetch('{{ route('universidades.index') }}');
+                    if (!response.ok) {
+                        throw new Error('No se pudieron cargar las universidades');
+                    }
+
+                    const universidades = await response.json();
+                    const select = document.getElementById('universidad');
+
+                    universidades.forEach(universidad => {
+                        const option = document.createElement('option');
+                        option.value = universidad.nombre;
+                        option.textContent = universidad.nombre;
+                        select.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error(error.message);
+                }
+            });
+        </script>
     </form>
 </x-guest-layout>
