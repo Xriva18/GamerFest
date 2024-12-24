@@ -324,3 +324,10 @@ html {
 .text-white {
   color: #fff; /* Asegura que el texto principal es blanco */
 }
+
+/* custom.css */
+
+/* Clase para etiquetas de texto blancas */
+.label-white {
+  color: #ffffff; /* Blanco */
+}
