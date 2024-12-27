@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Illuminate\Support\Facades\Storage;
 use Filament\Models\Contracts\HasAvatar;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Role;
+use App\Models\universidad;
 
 class User extends Authenticatable implements HasAvatar
 {
@@ -25,7 +28,6 @@ class User extends Authenticatable implements HasAvatar
         'email',
         'password',
         'apellido',
-        'universidad',
     ];
 
     /**
@@ -61,5 +63,13 @@ class User extends Authenticatable implements HasAvatar
     {
         return $this->avatar_url ? Storage::disk('public')->url($this->avatar_url) : null;
     }
+    public function rol(): BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'rol_id');
+    }
 
+    public function universidad(): BelongsTo
+    {
+        return $this->belongsTo(Universidad::class, 'universidad_id'); // Asegúrate de usar la columna correcta
+    }
 }

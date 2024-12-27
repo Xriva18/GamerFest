@@ -17,4 +17,10 @@ class EditUsers extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        // Redirige a la lista después de guardar
+        $this->redirect($this->getResource()::getUrl('index'));
+    }
 }

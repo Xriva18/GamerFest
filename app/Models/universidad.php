@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class universidad extends Model
+class Universidad extends Model
 {
-    use HasFactory;
-
     protected $table = 'universidades'; // Nombre de la tabla en la base de datos.
 
     /**
@@ -16,6 +13,7 @@ class universidad extends Model
      */
     protected $fillable = [
         'nombre',
+        'siglas', // Agregado el nuevo campo
     ];
 
     /**
@@ -23,7 +21,6 @@ class universidad extends Model
      */
     public function usuarios()
     {
-        return $this->hasMany(User::class, 'universidad');
+        return $this->hasMany(User::class, 'universidad_id');
     }
 }
-

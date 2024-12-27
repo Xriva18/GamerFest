@@ -47,13 +47,12 @@ class users extends Authenticatable
     {
         return $this->belongsTo(role::class, 'rol_id');
     }
-
     /**
      * Relación con la tabla universidades (si necesitas extender esto).
      */
     public function universidad()
     {
-        return $this->belongsTo(universidad::class, 'universidad');
+        return $this->belongsTo(universidad::class, 'universidad_id');
     }
 
     /**

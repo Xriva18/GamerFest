@@ -17,33 +17,44 @@ class UsersResource extends Resource
 {
     protected static ?string $model = Users::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    protected static ?string $navigationLabel = 'Usuarios';
+
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nombre')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('apellido')
+                    ->label('Apellido')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('role_id')
+                    ->label('Rol')
+                    ->relationship('role', 'nombre')
+                    ->required(),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
+                Forms\Components\Select::make('universidad_id')
+                    ->label('Universidad')
+                    ->relationship('universidad', 'nombre')
+                    ->required(),
+                //Forms\Components\DateTimePicker::make('email_verified_at'),
+                //Contraseña 
+                /*Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('avatar_url')
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('apellido')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('universidad')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('rol_id')
-                    ->numeric()
-                    ->default(4),
+                    ->maxLength(255),*/
+                /*Forms\Components\TextInput::make('avatar_url')
+                    ->maxLength(255),*/
             ]);
     }
 
@@ -52,14 +63,23 @@ class UsersResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Nombre')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('apellido')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('rol_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('role.nombre')
+                    ->label('Rol')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('universidad.siglas') // Accedemos al campo relacionado
+                    ->label('Universidad')
+                    ->sortable()
+                    ->searchable(),
+
+
                 /* Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),*/
@@ -78,7 +98,7 @@ class UsersResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                //Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
