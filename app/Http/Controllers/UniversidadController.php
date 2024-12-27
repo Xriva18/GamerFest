@@ -18,7 +18,7 @@ class UniversidadController extends Controller
             'apikey' => $apiKey,
             'Authorization' => 'Bearer ' . $apiKey,
         ])->get($url, [
-            'select' => 'nombre',
+            'select' => 'id,nombre',
         ]);
 
         // Validar respuesta

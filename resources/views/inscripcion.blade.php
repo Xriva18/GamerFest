@@ -96,7 +96,8 @@
 
             universidades.forEach(universidad => {
                 const option = document.createElement('option');
-                option.value = universidad.nombre;
+                // Aquí usas el 'id' como value
+                option.value = universidad.id;
                 option.textContent = universidad.nombre;
                 select.appendChild(option);
             });
