@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
 
 class JuegoResource extends Resource
 {
@@ -32,45 +33,66 @@ class JuegoResource extends Resource
                     ->directory('juegos') // Carpeta donde se almacenará la imagen en storage/app/public/juegos
                     ->required(), // Si deseas que sea obligatorio
                 Forms\Components\TextInput::make('precio')
-                    ->numeric(),
+                    ->label('Precio')
+                    ->numeric() // Permite solo números
+                    ->prefix('$') // Muestra el signo de dólar como prefijo
+                    ->required()
+                    ->rules(['regex:/^\d+(\.\d{1,2})?$/']) // Valida hasta 2 decimales
+                    ->placeholder('0.00'),
                 Forms\Components\TextInput::make('cantidad_participantes')
                     ->numeric(),
                 Forms\Components\DateTimePicker::make('horario'),
                 Forms\Components\Textarea::make('lugar')
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('tipo')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('coordinador_id')
-                    ->numeric(),
-            ]);
+                Forms\Components\Select::make('tipo')
+                    ->label('Tipo')
+                    ->options([
+                    'Individual' => 'Individual',
+                    'Grupal' => 'Grupal',
+                    ])
+                    ->required(),
+                Forms\Components\Select::make('coordinador_id')
+                ->label('Coordinador')
+                ->options(
+                    \App\Models\CoordinadorTemporal::query()
+                        ->get()
+                        ->mapWithKeys(function ($coordinador) {
+                            return [
+                                $coordinador->id_cod => $coordinador->nombre_cod . ' ' . $coordinador->apellido_cod,
+                            ];
+                        })
+                )
+                ->searchable() // Permite buscar por nombre o apellido
+                ->required(),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->label('ID')
-                    ->numeric()
-                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('nombre')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('imagen')
-                    ->label('Imagen')
-                    ->size(50),
+                    ->label('')
+                    ->size(100),
                 Tables\Columns\TextColumn::make('precio')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('cantidad_participantes')
-                    ->numeric()
-                    ->sortable(),
+                ->label('Precio')
+                ->numeric() // Asegura que la columna interprete el valor como numérico
+                ->sortable() // Permite ordenar por este campo
+                ->formatStateUsing(fn (string|int|float|null $state): string => '$' . number_format($state, 2)), // Formatea el precio con el signo $ y 2 decimales
+                Tables\Columns\TextColumn::make('tipo')
+                ->numeric()
+                ->sortable(),
                 Tables\Columns\TextColumn::make('horario')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('coordinador_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('coordinadorTemporal.nombre_completo')
+                    ->label('Coordinador')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //

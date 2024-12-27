@@ -21,9 +21,9 @@ class Juego extends Model
         'coordinador_id',
     ];
 
-    public function coordinador()
+    public function coordinadorTemporal()
     {
-        return $this->belongsTo(User::class, 'coordinador_id');
+        return $this->belongsTo(CoordinadorTemporal::class, 'coordinador_id', 'id_cod');
     }
 
     public function inscripciones()
