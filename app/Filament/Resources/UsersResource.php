@@ -21,6 +21,16 @@ class UsersResource extends Resource
 
     protected static ?string $navigationLabel = 'Usuarios';
 
+    // Personalizar etiquetas del recurso
+    public static function getPluralModelLabel(): string
+    {
+        return 'Usuarios';
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'Usuario';
+    }
 
 
     public static function form(Form $form): Form
@@ -30,10 +40,12 @@ class UsersResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Nombre')
                     ->required()
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('apellido')
                     ->label('Apellido')
                     ->required()
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\Select::make('role_id')
                     ->label('Rol')
@@ -42,10 +54,12 @@ class UsersResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\Select::make('universidad_id')
                     ->label('Universidad')
                     ->relationship('universidad', 'nombre')
+                    ->disabled()
                     ->required(),
                 //Forms\Components\DateTimePicker::make('email_verified_at'),
                 //Contraseña 
@@ -100,6 +114,7 @@ class UsersResource extends Resource
             ->actions([
                 //Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
