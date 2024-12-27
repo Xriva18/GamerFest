@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class juego extends Model
+class Juego extends Model
 {
-    // Nombre de la tabla en la base de datos
+    public $timestamps = false; // Deshabilitar timestamps
+
     protected $table = 'juegos';
 
-    // Atributos que se pueden asignar masivamente
     protected $fillable = [
         'nombre',
         'imagen',
@@ -21,13 +21,11 @@ class juego extends Model
         'coordinador_id',
     ];
 
-    // Relación con el modelo User (Coordinador)
-    public function coordinador()
+    public function coordinadorTemporal()
     {
-        return $this->belongsTo(User::class, 'coordinador_id');
+        return $this->belongsTo(CoordinadorTemporal::class, 'coordinador_id', 'id_cod');
     }
 
-    // Relación con el modelo Inscripcion (si existe)
     public function inscripciones()
     {
         return $this->hasMany(Inscripcion::class, 'juego_id');
