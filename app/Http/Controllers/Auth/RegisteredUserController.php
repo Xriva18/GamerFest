@@ -30,19 +30,21 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'regex:/^\S*$/u'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'apellido' => ['required', 'string', 'max:255', 'regex:/^\S*$/u'],
-            'universidad' => ['required', 'string', 'max:255'],
+            'name'         => ['required', 'string', 'max:255'],
+            'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'     => ['required', 'confirmed', Rules\Password::defaults()],
+            'apellido'     => ['required', 'string', 'max:255'],
+            // Para validar que sea un entero y que exista en la tabla 'universidades'
+            'universidad'  => ['required', 'integer', 'exists:universidades,id'],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'apellido' => $request->apellido,
-            'universidad' => $request->universidad,
+            'name'           => $request->name,
+            'email'          => $request->email,
+            'password'       => Hash::make($request->password),
+            'apellido'       => $request->apellido,
+            // Guardamos el ID de la universidad en la columna 'universidad_id'
+            'universidad_id' => $request->universidad,
         ]);
 
         event(new Registered($user));
