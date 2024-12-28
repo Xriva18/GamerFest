@@ -1,3 +1,4 @@
+<!-- Diseñado para GamerFest Ferbo -->
 @extends('layouts.main') <!-- Usa el layout base -->
 
 @section('title', 'Login')
