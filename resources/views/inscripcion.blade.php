@@ -71,7 +71,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-secondary-button href="{{ route('login') }}">
+                <x-secondary-button href="{{ url('/login') }}">
                     {{ __('Login') }}
                 </x-secondary-button>
 

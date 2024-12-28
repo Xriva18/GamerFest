@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <!-- Botón Login alineado a la derecha -->
-                <a class="btn-login" href="{{ url('/admin/login') }}">Login</a>
+                <a class="btn-login" href="{{ url('/login') }}">Login</a>
             </div>
         </div>
     </nav>
@@ -65,7 +65,7 @@
                 </div>
                 <!-- Register Button -->
                 <div class="d-flex justify-content-center justify-content-md-start">
-                    <a href="#" class="btn-register">Inscríbete ya!</a>
+                    <a href="/inscripcion" class="btn-register">Inscríbete ya!</a>
                 </div>
             </div>
             <!-- Image Column -->
