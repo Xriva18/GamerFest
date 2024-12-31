@@ -19,6 +19,8 @@ class gastoIngreso extends Model
         'usuario_id',
     ];
 
+    public $timestamps = false; // Deshabilita las marcas de tiempo
+
     // Relación con el modelo User
     public function usuario()
     {
