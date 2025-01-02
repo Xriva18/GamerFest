@@ -24,11 +24,34 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Este método ya se encarga de validar y autenticar las credenciales
         $request->authenticate();
 
+        // Regeneramos la sesión para evitar fijación de sesión
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Dependiendo del rol del usuario autenticado, redirigimos:
+        $user = $request->user();
+
+        switch ($user->rol_id) {
+            case 1:
+                // Administrador
+                return redirect()->intended('/admin');
+                // O si prefieres un named route, por ejemplo:
+                // return redirect()->intended(route('admin.dashboard'));
+            case 2:
+                // Coordinador
+                return redirect()->intended('/coordinador');
+            case 3:
+                // Tesorero
+                return redirect()->intended('/tesorero');
+            case 4:
+                // Participante
+                return redirect()->intended('/participante');
+            default:
+                // Rol no definido, redirige a alguna ruta de fallback
+                return redirect('/');
+        }
     }
 
     /**
