@@ -89,10 +89,13 @@ class JuegoResource extends Resource
                 Tables\Columns\TextColumn::make('horario')
                     ->dateTime()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('coordinadorTemporal.nombre_completo')
+                Tables\Columns\TextColumn::make('coordinadorTemporal')
                     ->label('Coordinador')
-                    ->sortable()
-                    ->searchable(),
+                    ->getStateUsing(function ($record) {
+                        return $record->coordinador?->nombre_cod . ' ' . $record->coordinador?->apellido_cod;
+                    })
+                    ->sortable(false) // No se puede ordenar directamente
+                    ->searchable(false), // No se puede buscar directamente
             ])
             ->filters([
                 //
