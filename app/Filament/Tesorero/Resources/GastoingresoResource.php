@@ -17,6 +17,10 @@ class GastoingresoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-chart-pie';
 
+    protected static ?string $label = 'Gasto o Ingreso'; // Singular
+    
+    protected static ?string $pluralLabel = 'Gastos e Ingresos'; // Plural
+
     public static function form(Form $form): Form
     {
         return $form
