@@ -26,7 +26,7 @@ class TesoreroPanelProvider extends PanelProvider
             ->id('tesorero')
             ->path('tesorero')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Gamer,
             ])
             ->discoverResources(in: app_path('Filament/Tesorero/Resources'), for: 'App\\Filament\\Tesorero\\Resources')
             ->discoverPages(in: app_path('Filament/Tesorero/Pages'), for: 'App\\Filament\\Tesorero\\Pages')
