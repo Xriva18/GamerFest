@@ -73,4 +73,9 @@ class User extends Authenticatable implements HasAvatar
     {
         return $this->belongsTo(Universidad::class, 'universidad_id'); // Asegúrate de usar la columna correcta
     }
+
+    public function coordinador()
+    {
+        return $this->belongsTo(CoordinadorTemporal::class, 'coordinador_id', 'id_cod');
+    }
 }
