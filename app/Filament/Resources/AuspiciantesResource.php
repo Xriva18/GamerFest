@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Facades\Storage;
 
 class AuspiciantesResource extends Resource
 {
@@ -35,11 +37,10 @@ class AuspiciantesResource extends Resource
                     ->placeholder('0.00'),
                 Forms\Components\FileUpload::make('imagen')
                     ->label('Logo:')
-                    ->image()
-                    //->directory('auspiciantes') // Carpeta dentro del bucket
-                    ->disk('s3') // Indica que usarás el disco S3 configurado
-                    ->visibility('public') // Define si será accesible públicamente
-                    ->required(),
+                    ->disk('s3')
+                    ->directory('auspiciantes') // Fuerza a usar una carpeta en S3
+                    ->visibility('private')      // Importante si quieres servir la imagen públicamente
+                    ->image(),
             ]);
     }
 
@@ -52,7 +53,8 @@ class AuspiciantesResource extends Resource
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('imagen')
                     ->label('')
-                    ->size(100),
+                    ->size(100)
+                    ->disk('s3'), // Especifica el disco si es necesario,
                 Tables\Columns\TextColumn::make('aportacion')
                     ->label('aportacion')
                     ->numeric() // Asegura que la columna interprete el valor como numérico
