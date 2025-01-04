@@ -18,9 +18,9 @@ class GastoingresoResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-chart-pie';
 
     protected static ?string $label = 'Gasto o Ingreso'; // Singular
-    
+
     protected static ?string $pluralLabel = 'Gastos e Ingresos'; // Plural
-  
+
     public static function form(Form $form): Form
     {
         return $form
@@ -44,6 +44,8 @@ class GastoingresoResource extends Resource
                     ->placeholder('Ejemplo: Pago de materiales'),
                 Forms\Components\FileUpload::make('comprobante')
                     ->label('Comprobante')
+                    ->disk('s3')
+                    ->visibility('private')
                     ->directory('comprobantes'),
                 Forms\Components\DatePicker::make('fecha')
                     ->label('Fecha')
@@ -74,7 +76,7 @@ class GastoingresoResource extends Resource
                 Tables\Columns\ImageColumn::make('comprobante')
                     ->label('Comprobante')
                     ->size(60) // Tamaño de la miniatura
-                    ->url(fn ($record) => $record->comprobante ? Storage::url($record->comprobante) : null) // Genera URL pública
+                    ->disk('s3')
                     ->openUrlInNewTab(), // Abrir en una nueva pestaña
             ])
             ->filters([
