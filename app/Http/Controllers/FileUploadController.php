@@ -32,17 +32,15 @@ class FileUploadController extends Controller
 
         // Verificar si hay un archivo en la solicitud
         if ($request->hasFile('image')) {
+            // Obtener el archivo de la solicitud
             $file = $request->file('image');
             // Subir el archivo al almacenamiento S3 (Supabase)
             $route = Storage::disk('s3')->put('prueba', $file);
-
+            // Obtener la URL del archivo almacenado
+            $url = Storage::disk('s3')->url($route);
             // Mostrar la ruta del archivo almacenado
-            dd($route);
-
-            // Si necesitas redirigir después, puedes hacerlo como este ejemplo:
-            // return redirect()->route('fileupload.create')->with('success', 'Archivo cargado correctamente');
+            dd($url);
         }
-
         // Si no se encuentra el archivo, redirigir con un mensaje de error
         return redirect()->route('fileupload.create')->with('error', 'No se encontró el archivo.');
     }
