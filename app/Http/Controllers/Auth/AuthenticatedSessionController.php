@@ -36,18 +36,18 @@ class AuthenticatedSessionController extends Controller
         switch ($user->rol_id) {
             case 1:
                 // Administrador
-                return redirect()->intended('/admin');
-                // O si prefieres un named route, por ejemplo:
-                // return redirect()->intended(route('admin.dashboard'));
+                return redirect('/admin');
+                // O si prefieres un named route:
+                // return redirect()->route('admin.dashboard');
             case 2:
                 // Coordinador
-                return redirect()->intended('/coordinador');
+                return redirect('/coordinador');
             case 3:
                 // Tesorero
-                return redirect()->intended('/tesorero');
+                return redirect('/tesorero');
             case 4:
                 // Participante
-                return redirect()->intended('/participante');
+                return redirect('/participante');
             default:
                 // Rol no definido, redirige a alguna ruta de fallback
                 return redirect('/');
