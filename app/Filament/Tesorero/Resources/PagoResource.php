@@ -107,5 +107,4 @@ class PagoResource extends Resource
             'view' => Pages\ViewPago::route('/{record}'),
         ];
     }
-    
 }

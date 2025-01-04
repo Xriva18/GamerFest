@@ -26,7 +26,7 @@ class ParticipantePanelProvider extends PanelProvider
             ->id('participante')
             ->path('participante')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Gamer,
             ])
             ->discoverResources(in: app_path('Filament/Participante/Resources'), for: 'App\\Filament\\Participante\\Resources')
             ->discoverPages(in: app_path('Filament/Participante/Pages'), for: 'App\\Filament\\Participante\\Pages')
