@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UniversidadController;
-
+use App\Http\Controllers\FileUploadController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +25,9 @@ Route::get('/universidades', [UniversidadController::class, 'index'])->name('uni
 Route::get('/inscripcion', function () {
     return view('inscripcion');
 })->name('inscripcion');
+
+Route::get('fileupload', [FileUploadController::class, 'create'])->name('fileupload.create');
+Route::post('fileupload', [FileUploadController::class, 'store'])->name('fileupload.store');
 
 
 require __DIR__ . '/auth.php';

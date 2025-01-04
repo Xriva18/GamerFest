@@ -17,6 +17,10 @@ class PagoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
+    protected static ?string $label = 'Pago';
+    
+    protected static ?string $pluralLabel = 'Pagos';
+
     public static function form(Form $form): Form
     {
         return $form

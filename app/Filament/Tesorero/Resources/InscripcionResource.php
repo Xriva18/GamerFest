@@ -20,6 +20,11 @@ class InscripcionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
+
+    protected static ?string $label = 'Inscripción';
+    
+    protected static ?string $pluralLabel = 'Inscripciones';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -28,6 +33,8 @@ class InscripcionResource extends Resource
                     ->label('Usuario')
                     ->relationship('usuario', 'name')
                     ->searchable()
+                    ->preload() // Carga automáticamente los datos
+
                     ->required()
                     ->createOptionForm([
                         Forms\Components\TextInput::make('name')
@@ -42,15 +49,32 @@ class InscripcionResource extends Resource
                             ->password()
                             ->required(),
                     ]), // Permite ingresar manualmente un usuario
+
                 Forms\Components\Select::make('juego_id')
                     ->label('Juego')
                     ->relationship('juego', 'nombre')
                     ->searchable()
+                    ->preload() // Carga automáticamente los datos
                     ->required(),
                 Forms\Components\Select::make('equipo_id')
                     ->label('Equipo')
                     ->relationship('equipo', 'nombre')
-                    ->nullable(),
+                    ->searchable()
+                    ->preload() // Carga automáticamente los datos
+                    ->nullable()
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('nombre')
+                            ->label('Nombre del Equipo')
+                            ->required()
+                            ->placeholder('Ejemplo: Los Ganadores'),
+                        Forms\Components\Select::make('lider_id')
+                            ->label('Líder del Equipo')
+                            ->relationship('lider', 'name')
+                            ->searchable()
+                            ->preload() // Carga automáticamente los datos
+                            ->nullable(),
+                    ]),
+              
                 Forms\Components\TextInput::make('tipo')
                     ->label('Tipo de inscripción')
                     ->required()
@@ -64,6 +88,12 @@ class InscripcionResource extends Resource
                         'rechazado' => 'Rechazado',
                     ])
                     ->required(),
+                Forms\Components\TextInput::make('numero_comprobante')
+                    ->label('Número de Comprobante')
+                    ->numeric() // Solo números
+                    ->required()
+                    ->placeholder('Ejemplo: 123456789'),
+
                 Forms\Components\FileUpload::make('imagen_comprobante')
                     ->label('Comprobante')
                     ->directory('comprobantes'),
@@ -100,23 +130,30 @@ class InscripcionResource extends Resource
                     ])
                     ->sortable()
                     ->searchable(),
-                    Tables\Columns\ImageColumn::make('imagen_comprobante')
+                Tables\Columns\TextColumn::make('numero_comprobante')
+                    ->label('N° Comprobante')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('imagen_comprobante')
                     ->label('Comprobante')
                     ->size(60) // Tamaño de la miniatura
                     ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null) // Genera la URL pública
-                    ->openUrlInNewTab(), // Abrir en una nueva pestaña                
+                    ->openUrlInNewTab(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make(), // Habilita la acción de ver
+
+                Tables\Actions\ViewAction::make(),// Habilita la acción de ver
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+
+    }
 
     public static function getRelations(): array
     {

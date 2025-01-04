@@ -26,7 +26,7 @@ class CoordinadorPanelProvider extends PanelProvider
             ->id('coordinador')
             ->path('coordinador')
             ->colors([
-                'primary' => Color::Gamer,
+                'primary' => Color::Blue,
             ])
             ->font('roboto')
             ->discoverResources(in: app_path('Filament/Coordinador/Resources'), for: 'App\\Filament\\Coordinador\\Resources')
