@@ -18,19 +18,22 @@ class JuegoResource extends Resource
 {
     protected static ?string $model = Juego::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-puzzle-piece';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('nombre')
+                Forms\Components\TextInput::make('nombre')
+                    ->label('Nombre:')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('imagen')
                     ->label('Imagen')
                     ->image() // Habilita solo archivos de imagen
+                    ->disk('s3') // Almacena la imagen en S3
                     ->directory('juegos') // Carpeta donde se almacenará la imagen en storage/app/public/juegos
+                    ->visibility('private') // Permite que la imagen sea accesible públicamente
                     ->required(), // Si deseas que sea obligatorio
                 Forms\Components\TextInput::make('precio')
                     ->label('Precio')
@@ -39,32 +42,41 @@ class JuegoResource extends Resource
                     ->required()
                     ->rules(['regex:/^\d+(\.\d{1,2})?$/']) // Valida hasta 2 decimales
                     ->placeholder('0.00'),
-                Forms\Components\TextInput::make('cantidad_participantes')
-                    ->numeric(),
                 Forms\Components\DateTimePicker::make('horario'),
-                Forms\Components\Textarea::make('lugar')
-                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('lugar')
+                    ->required(),
                 Forms\Components\Select::make('tipo')
                     ->label('Tipo')
                     ->options([
-                    'Individual' => 'Individual',
-                    'Grupal' => 'Grupal',
+                        'Individual' => 'Individual',
+                        'Grupal' => 'Grupal',
                     ])
-                    ->required(),
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(function (callable $set, $state) {
+                        if ($state === 'Grupal') {
+                            $set('cantidad_participantes', null);
+                        }
+                    }),
+                Forms\Components\TextInput::make('cantidad_participantes')
+                    ->label('Cantidad de participantes')
+                    ->numeric()
+                    ->required(fn(callable $get) => $get('tipo') === 'Grupal')
+                    ->hidden(fn(callable $get) => $get('tipo') !== 'Grupal'),
                 Forms\Components\Select::make('coordinador_id')
-                ->label('Coordinador')
-                ->options(
-                    \App\Models\CoordinadorTemporal::query()
-                        ->get()
-                        ->mapWithKeys(function ($coordinador) {
-                            return [
-                                $coordinador->id_cod => $coordinador->nombre_cod . ' ' . $coordinador->apellido_cod,
-                            ];
-                        })
-                )
-                ->searchable() // Permite buscar por nombre o apellido
-                ->required(),
-        ]);
+                    ->label('Coordinador')
+                    ->options(
+                        \App\Models\CoordinadorTemporal::query()
+                            ->get()
+                            ->mapWithKeys(function ($coordinador) {
+                                return [
+                                    $coordinador->id_cod => $coordinador->nombre_cod . ' ' . $coordinador->apellido_cod,
+                                ];
+                            })
+                    )
+                    ->searchable() // Permite buscar por nombre o apellido
+                    ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -76,16 +88,17 @@ class JuegoResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('imagen')
-                    ->label('')
+                    ->label('Logo')
+                    ->disk('s3')
                     ->size(100),
                 Tables\Columns\TextColumn::make('precio')
-                ->label('Precio')
-                ->numeric() // Asegura que la columna interprete el valor como numérico
-                ->sortable() // Permite ordenar por este campo
-                ->formatStateUsing(fn (string|int|float|null $state): string => '$' . number_format($state, 2)), // Formatea el precio con el signo $ y 2 decimales
+                    ->label('Precio')
+                    ->numeric() // Asegura que la columna interprete el valor como numérico
+                    ->sortable() // Permite ordenar por este campo
+                    ->formatStateUsing(fn(string|int|float|null $state): string => '$' . number_format($state, 2)), // Formatea el precio con el signo $ y 2 decimales
                 Tables\Columns\TextColumn::make('tipo')
-                ->numeric()
-                ->sortable(),
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('horario')
                     ->dateTime()
                     ->sortable(),
@@ -103,6 +116,7 @@ class JuegoResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

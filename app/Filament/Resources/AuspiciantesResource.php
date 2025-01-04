@@ -56,7 +56,7 @@ class AuspiciantesResource extends Resource
                     ->size(100)
                     ->disk('s3'), // Especifica el disco si es necesario,
                 Tables\Columns\TextColumn::make('aportacion')
-                    ->label('aportacion')
+                    ->label('Aportación')
                     ->numeric() // Asegura que la columna interprete el valor como numérico
                     ->sortable() // Permite ordenar por este campo
                     ->formatStateUsing(fn(string|int|float|null $state): string => '$' . number_format($state, 2)), // Formatea el precio con el signo $ y 2 decimales
@@ -67,6 +67,7 @@ class AuspiciantesResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
