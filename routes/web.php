@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UniversidadController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +31,16 @@ Route::get('/inscripcion', function () {
 Route::get('fileupload', [FileUploadController::class, 'create'])->name('fileupload.create');
 Route::post('fileupload', [FileUploadController::class, 'store'])->name('fileupload.store');
 
+Route::get('/login', function (Request $request) {
+    if (Auth::check()) {
+        Auth::logout();
+        // Opcional: Puedes invalidar la sesión y regenerar el token CSRF
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    }
+    // Mostrar el formulario de inicio de sesión
+    // Reutilizamos el método 'create' del AuthenticatedSessionController
+    return app(AuthenticatedSessionController::class)->create($request);
+})->name('login');
 
 require __DIR__ . '/auth.php';
