@@ -34,11 +34,13 @@ class InscripcionResource extends Resource
                     ->relationship('usuario', 'name')
                     ->searchable()
                     ->preload() // Carga automáticamente los datos
-
                     ->required()
                     ->createOptionForm([
                         Forms\Components\TextInput::make('name')
                             ->label('Nombre')
+                            ->required(),
+                        Forms\Components\TextInput::make('apellido')
+                            ->label('Apellido')
                             ->required(),
                         Forms\Components\TextInput::make('email')
                             ->label('Correo Electrónico')
@@ -106,8 +108,9 @@ class InscripcionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('usuario.name')
+                Tables\Columns\TextColumn::make('usuario')
                     ->label('Usuario')
+                    ->formatStateUsing(fn ($record) => "{$record->usuario->name} {$record->usuario->apellido}")
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('juego.nombre')
@@ -118,7 +121,7 @@ class InscripcionResource extends Resource
                     ->label('Equipo')
                     ->sortable()
                     ->searchable()
-                    ->formatStateUsing(fn($state) => $state ?? 'Sin equipo'),
+                    ->formatStateUsing(fn ($state) => $state ?? 'Sin equipo'),
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo de inscripción')
                     ->sortable()
@@ -138,9 +141,9 @@ class InscripcionResource extends Resource
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('imagen_comprobante')
                     ->label('Comprobante')
-                    ->size(60) // Tamaño de la miniatura
+                    ->size(60)
                     ->disk('s3')
-                    ->url(fn($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null) // Genera la URL pública
+                    ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
                     ->openUrlInNewTab(),
             ])
             ->filters([
@@ -148,9 +151,7 @@ class InscripcionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-
-                Tables\Actions\ViewAction::make(), // Habilita la acción de ver
-
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
