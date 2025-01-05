@@ -22,7 +22,7 @@ class InscripcionResource extends Resource
 
 
     protected static ?string $label = 'Inscripción';
-    
+
     protected static ?string $pluralLabel = 'Inscripciones';
 
     public static function form(Form $form): Form
@@ -74,7 +74,7 @@ class InscripcionResource extends Resource
                             ->preload() // Carga automáticamente los datos
                             ->nullable(),
                     ]),
-              
+
                 Forms\Components\TextInput::make('tipo')
                     ->label('Tipo de inscripción')
                     ->required()
@@ -96,6 +96,8 @@ class InscripcionResource extends Resource
 
                 Forms\Components\FileUpload::make('imagen_comprobante')
                     ->label('Comprobante')
+                    ->disk('s3')
+                    ->visibility('private')
                     ->directory('comprobantes'),
             ]);
     }
@@ -116,7 +118,7 @@ class InscripcionResource extends Resource
                     ->label('Equipo')
                     ->sortable()
                     ->searchable()
-                    ->formatStateUsing(fn ($state) => $state ?? 'Sin equipo'),
+                    ->formatStateUsing(fn($state) => $state ?? 'Sin equipo'),
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo de inscripción')
                     ->sortable()
@@ -137,7 +139,8 @@ class InscripcionResource extends Resource
                 Tables\Columns\ImageColumn::make('imagen_comprobante')
                     ->label('Comprobante')
                     ->size(60) // Tamaño de la miniatura
-                    ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null) // Genera la URL pública
+                    ->disk('s3')
+                    ->url(fn($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null) // Genera la URL pública
                     ->openUrlInNewTab(),
             ])
             ->filters([
@@ -146,13 +149,12 @@ class InscripcionResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
 
-                Tables\Actions\ViewAction::make(),// Habilita la acción de ver
+                Tables\Actions\ViewAction::make(), // Habilita la acción de ver
 
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-
     }
 
     public static function getRelations(): array
