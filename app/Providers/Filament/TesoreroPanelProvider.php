@@ -17,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class TesoreroPanelProvider extends PanelProvider
 {
@@ -51,6 +52,21 @@ class TesoreroPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])->plugin(
+                BreezyCore::make()
+                    ->myProfile(
+                        shouldRegisterUserMenu: true, // Agrega el enlace "Mi Cuenta" en el menú del usuario
+                        shouldRegisterNavigation: false, // No agrega un ítem de navegación principal para la página de perfil
+                        navigationGroup: 'Settings', // Define el grupo de navegación para la página de perfil
+                        hasAvatars: true, // Habilita soporte para avatar
+                        slug: 'my-profile' // Establece el slug de la página de perfil
+                    )
+                    ->enableTwoFactorAuthentication(force: false)
+                    //Desaactiva las secciones de información personal y cambio de contraseña
+                    ->withoutMyProfileComponents([
+                        'personal_info', // Desactiva la sección de información personal
+                        'update_password', // Desactiva la sección de cambio de contraseña
+                    ])
+            ); // Agrega el plugin BreezyCore;;
     }
 }

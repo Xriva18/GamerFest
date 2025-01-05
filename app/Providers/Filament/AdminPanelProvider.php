@@ -65,6 +65,11 @@ class AdminPanelProvider extends PanelProvider
                         slug: 'my-profile' // Establece el slug de la página de perfil
                     )
                     ->enableTwoFactorAuthentication(force: false)
+                    //Desaactiva las secciones de información personal y cambio de contraseña
+                    ->withoutMyProfileComponents([
+                        'personal_info', // Desactiva la sección de información personal
+                        'update_password', // Desactiva la sección de cambio de contraseña
+                    ])
             ); // Agrega el plugin BreezyCore;
     }
 }
