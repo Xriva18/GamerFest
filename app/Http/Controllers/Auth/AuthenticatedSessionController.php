@@ -12,10 +12,27 @@ use Illuminate\View\View;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the login view or redirect if already authenticated.
      */
-    public function create(): View
+    public function create(): View|RedirectResponse
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            switch ($user->rol_id) {
+                case 1:
+                    return redirect('/admin');
+                case 2:
+                    return redirect('/coordinador');
+                case 3:
+                    return redirect('/tesorero');
+                case 4:
+                    return redirect('/participante');
+                default:
+                    return redirect('/');
+            }
+        }
+
         return view('auth.login');
     }
 
@@ -35,21 +52,14 @@ class AuthenticatedSessionController extends Controller
 
         switch ($user->rol_id) {
             case 1:
-                // Administrador
                 return redirect('/admin');
-                // O si prefieres un named route:
-                // return redirect()->route('admin.dashboard');
             case 2:
-                // Coordinador
                 return redirect('/coordinador');
             case 3:
-                // Tesorero
                 return redirect('/tesorero');
             case 4:
-                // Participante
                 return redirect('/participante');
             default:
-                // Rol no definido, redirige a alguna ruta de fallback
                 return redirect('/');
         }
     }
