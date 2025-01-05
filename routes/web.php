@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UniversidadController;
@@ -50,5 +51,10 @@ Route::get('/inscripcion', function () {
 Route::get('fileupload', [FileUploadController::class, 'create'])->name('fileupload.create');
 Route::post('fileupload', [FileUploadController::class, 'store'])->name('fileupload.store');
 
+
+Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    ->name('login');
+
+Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 require __DIR__ . '/auth.php';
