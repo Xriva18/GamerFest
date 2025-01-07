@@ -32,21 +32,16 @@ class InscripcionResource extends Resource
         return $table
             ->query(fn () => Inscripcion::where('usuario_id', Auth::id())) // Filtra por usuario actual
             ->columns([
-                Tables\Columns\TextColumn::make('usuario')
-                    ->label('Usuario')
-                    ->formatStateUsing(fn ($record) => "{$record->usuario->name} {$record->usuario->apellido}")
-                    ->sortable()
-                    ->searchable(),
     
                 Tables\Columns\ImageColumn::make('juego.imagen')
-                    ->label('Imagen del Juego')
+                    ->label('')
                     ->disk('s3') // Cambia el disco si es necesario
                     ->size(60) // Tamaño de la miniatura
                     ->url(fn ($record) => $record->juego->imagen ? Storage::url($record->juego->imagen) : null) // Genera la URL si está disponible
                     ->openUrlInNewTab(), // Permite abrir la imagen en una nueva pestaña
     
                 Tables\Columns\TextColumn::make('juego.nombre')
-                    ->label('Nombre del Juego')
+                    ->label('Juego')
                     ->sortable()
                     ->searchable(),
     
