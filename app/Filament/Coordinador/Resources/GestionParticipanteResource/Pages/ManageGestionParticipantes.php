@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Filament\Resources\GestionParticipanteResource\Pages;
+namespace App\Filament\Coordinador\Resources\GestionParticipanteResource\Pages;
+
 
 use App\Filament\Coordinador\Resources\GestionParticipanteResource;
 use Filament\Pages\Actions;

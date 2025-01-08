@@ -2,7 +2,7 @@
 
 namespace App\Filament\Coordinador\Resources;
 
-use App\Filament\Resources\GestionParticipanteResource\Pages;
+use App\Filament\Coordinador\Resources\GestionParticipanteResource\Pages;
 use App\Models\GestionParticipante;
 use Filament\Forms;
 use Filament\Tables;

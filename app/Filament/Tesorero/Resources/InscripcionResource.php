@@ -33,7 +33,7 @@ class InscripcionResource extends Resource
                     ->label('Usuario')
                     ->relationship('usuario', 'name')
                     ->searchable()
-                    ->preload()
+                    ->preload() // Carga automáticamente los datos
                     ->required()
                     ->getOptionLabelFromRecordUsing(fn($record) => "{$record->name} {$record->apellido}") // Mostrar nombre y apellido juntos
                     ->createOptionForm([
@@ -138,7 +138,6 @@ class InscripcionResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->formatStateUsing(fn($state) => $state ?? 'Sin equipo'),
-
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo de inscripción')
                     ->sortable(),
@@ -167,6 +166,7 @@ class InscripcionResource extends Resource
             ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([]);
     }

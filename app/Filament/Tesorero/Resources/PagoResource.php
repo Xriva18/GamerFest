@@ -57,8 +57,11 @@ class PagoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('inscripcion.usuario.name')
-                    ->label('Usuario'),
+                Tables\Columns\TextColumn::make('inscripcion.usuario')
+                    ->label('Usuario')
+                    ->formatStateUsing(fn ($record) => "{$record->inscripcion->usuario->name} {$record->inscripcion->usuario->apellido}")
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\BadgeColumn::make('estado')
                     ->label('Estado')
                     ->colors([
