@@ -35,7 +35,7 @@ class InscripcionResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required()
-                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->name} {$record->apellido}") // Mostrar nombre y apellido juntos
+                    ->getOptionLabelFromRecordUsing(fn($record) => "{$record->name} {$record->apellido}") // Mostrar nombre y apellido juntos
                     ->createOptionForm([
                         Forms\Components\TextInput::make('name')
                             ->label('Nombre')
@@ -52,14 +52,14 @@ class InscripcionResource extends Resource
                             ->password()
                             ->required(),
                     ]),
-    
+
                 Forms\Components\Select::make('juego_id')
                     ->label('Juego')
                     ->relationship('juego', 'nombre')
                     ->searchable()
                     ->preload()
                     ->required(),
-    
+
                 Forms\Components\Select::make('equipo_id')
                     ->label('Equipo')
                     ->relationship('equipo', 'nombre')
@@ -86,12 +86,15 @@ class InscripcionResource extends Resource
                             ->required()
                             ->maxItems(4), // Límite de integrantes
                     ]),
-    
-                Forms\Components\TextInput::make('tipo')
+
+                Forms\Components\Select::make('tipo')
                     ->label('Tipo de inscripción')
-                    ->default('Individual')
+                    ->options([
+                        'Individual' => 'Individual',
+                        'Grupo' => 'Grupo',
+                    ])
                     ->required(),
-    
+
                 Forms\Components\Select::make('estado_pago')
                     ->label('Estado del Pago')
                     ->options([
@@ -100,13 +103,13 @@ class InscripcionResource extends Resource
                         'rechazado' => 'Rechazado',
                     ])
                     ->required(),
-    
+
                 Forms\Components\TextInput::make('numero_comprobante')
                     ->label('Número de Comprobante')
                     ->numeric()
                     ->required()
                     ->placeholder('Ejemplo: 123456789'),
-    
+
                 Forms\Components\FileUpload::make('imagen_comprobante')
                     ->label('Comprobante')
                     ->disk('s3')
@@ -121,25 +124,25 @@ class InscripcionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('usuario')
                     ->label('Usuario')
-                    ->formatStateUsing(fn ($record) => "{$record->usuario->name} {$record->usuario->apellido}")
+                    ->formatStateUsing(fn($record) => "{$record->usuario->name} {$record->usuario->apellido}")
                     ->sortable()
                     ->searchable(),
-    
+
                 Tables\Columns\TextColumn::make('juego.nombre')
                     ->label('Juego')
                     ->sortable()
                     ->searchable(),
-    
+
                 Tables\Columns\TextColumn::make('equipo.nombre')
                     ->label('Equipo')
                     ->sortable()
                     ->searchable()
                     ->formatStateUsing(fn($state) => $state ?? 'Sin equipo'),
-    
+
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo de inscripción')
                     ->sortable(),
-    
+
                 Tables\Columns\BadgeColumn::make('estado_pago')
                     ->label('Estado del Pago')
                     ->colors([
@@ -148,17 +151,17 @@ class InscripcionResource extends Resource
                         'warning' => 'pendiente',
                     ])
                     ->sortable(),
-    
+
                 Tables\Columns\TextColumn::make('numero_comprobante')
                     ->label('N° Comprobante')
                     ->sortable()
                     ->searchable(),
-    
+
                 Tables\Columns\ImageColumn::make('imagen_comprobante')
                     ->label('Comprobante')
                     ->size(60)
                     ->disk('s3')
-                    ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
+                    ->url(fn($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
                     ->openUrlInNewTab(),
             ])
             ->filters([])
