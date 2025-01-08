@@ -39,4 +39,19 @@ class inscripcion extends Model
     {
         return $this->belongsTo(Equipo::class, 'equipo_id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($inscripcion) {
+            // Validar duplicados
+            if (Inscripcion::where('usuario_id', $inscripcion->usuario_id)
+                ->where('juego_id', $inscripcion->juego_id)
+                ->where('tipo', $inscripcion->tipo)
+                ->exists()) {
+                throw new \Exception('El usuario ya está inscrito en este juego con el tipo seleccionado.');
+            }
+        });
+    }
 }

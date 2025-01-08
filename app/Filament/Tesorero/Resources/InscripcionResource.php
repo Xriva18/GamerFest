@@ -35,6 +35,7 @@ class InscripcionResource extends Resource
                     ->searchable()
                     ->preload() // Carga automáticamente los datos
                     ->required()
+                    ->getOptionLabelFromRecordUsing(fn($record) => "{$record->name} {$record->apellido}") // Mostrar nombre y apellido juntos
                     ->createOptionForm([
                         Forms\Components\TextInput::make('name')
                             ->label('Nombre')
@@ -50,20 +51,24 @@ class InscripcionResource extends Resource
                             ->label('Contraseña')
                             ->password()
                             ->required(),
-                    ]), // Permite ingresar manualmente un usuario
+                    ]),
 
                 Forms\Components\Select::make('juego_id')
                     ->label('Juego')
                     ->relationship('juego', 'nombre')
                     ->searchable()
-                    ->preload() // Carga automáticamente los datos
+                    ->preload()
                     ->required(),
+
                 Forms\Components\Select::make('equipo_id')
                     ->label('Equipo')
                     ->relationship('equipo', 'nombre')
                     ->searchable()
-                    ->preload() // Carga automáticamente los datos
+                    ->preload()
                     ->nullable()
+                    ->afterStateUpdated(function (callable $set, $state) {
+                        $set('tipo', $state ? 'Grupo' : 'Individual'); // Cambia automáticamente el tipo
+                    })
                     ->createOptionForm([
                         Forms\Components\TextInput::make('nombre')
                             ->label('Nombre del Equipo')
@@ -73,15 +78,23 @@ class InscripcionResource extends Resource
                             ->label('Líder del Equipo')
                             ->relationship('lider', 'name')
                             ->searchable()
-                            ->preload() // Carga automáticamente los datos
+                            ->preload()
                             ->nullable(),
+                        Forms\Components\MultiSelect::make('integrantes') // Seleccionar múltiples usuarios
+                            ->label('Integrantes')
+                            ->options(\App\Models\User::pluck('name', 'id')) // Opciones de usuarios registrados
+                            ->required()
+                            ->maxItems(4), // Límite de integrantes
                     ]),
 
-                Forms\Components\TextInput::make('tipo')
+                Forms\Components\Select::make('tipo')
                     ->label('Tipo de inscripción')
-                    ->required()
-                    ->regex('/^[a-zA-Z\s]+$/') // Solo letras y espacios
-                    ->placeholder('Ejemplo: Individual o Grupo'),
+                    ->options([
+                        'Individual' => 'Individual',
+                        'Grupo' => 'Grupo',
+                    ])
+                    ->required(),
+
                 Forms\Components\Select::make('estado_pago')
                     ->label('Estado del Pago')
                     ->options([
@@ -90,9 +103,10 @@ class InscripcionResource extends Resource
                         'rechazado' => 'Rechazado',
                     ])
                     ->required(),
+
                 Forms\Components\TextInput::make('numero_comprobante')
                     ->label('Número de Comprobante')
-                    ->numeric() // Solo números
+                    ->numeric()
                     ->required()
                     ->placeholder('Ejemplo: 123456789'),
 
@@ -110,52 +124,51 @@ class InscripcionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('usuario')
                     ->label('Usuario')
-                    ->formatStateUsing(fn ($record) => "{$record->usuario->name} {$record->usuario->apellido}")
+                    ->formatStateUsing(fn($record) => "{$record->usuario->name} {$record->usuario->apellido}")
                     ->sortable()
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('juego.nombre')
                     ->label('Juego')
                     ->sortable()
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('equipo.nombre')
                     ->label('Equipo')
                     ->sortable()
                     ->searchable()
-                    ->formatStateUsing(fn ($state) => $state ?? 'Sin equipo'),
+                    ->formatStateUsing(fn($state) => $state ?? 'Sin equipo'),
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo de inscripción')
-                    ->sortable()
-                    ->searchable(),
+                    ->sortable(),
+
                 Tables\Columns\BadgeColumn::make('estado_pago')
-                    ->label('Estado del pago')
+                    ->label('Estado del Pago')
                     ->colors([
                         'success' => 'aprobado',
                         'danger' => 'rechazado',
                         'warning' => 'pendiente',
                     ])
-                    ->sortable()
-                    ->searchable(),
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('numero_comprobante')
                     ->label('N° Comprobante')
                     ->sortable()
                     ->searchable(),
+
                 Tables\Columns\ImageColumn::make('imagen_comprobante')
                     ->label('Comprobante')
                     ->size(60)
                     ->disk('s3')
-                    ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
+                    ->url(fn($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
                     ->openUrlInNewTab(),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
