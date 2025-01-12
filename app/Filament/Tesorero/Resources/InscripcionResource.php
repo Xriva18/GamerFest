@@ -20,7 +20,6 @@ class InscripcionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-
     protected static ?string $label = 'Inscripción';
 
     protected static ?string $pluralLabel = 'Inscripciones';
@@ -33,9 +32,9 @@ class InscripcionResource extends Resource
                     ->label('Usuario')
                     ->relationship('usuario', 'name')
                     ->searchable()
-                    ->preload() // Carga automáticamente los datos
+                    ->preload()
                     ->required()
-                    ->getOptionLabelFromRecordUsing(fn($record) => "{$record->name} {$record->apellido}") // Mostrar nombre y apellido juntos
+                    ->getOptionLabelFromRecordUsing(fn($record) => "{$record->name} {$record->apellido}")
                     ->createOptionForm([
                         Forms\Components\TextInput::make('name')
                             ->label('Nombre')
@@ -67,7 +66,7 @@ class InscripcionResource extends Resource
                     ->preload()
                     ->nullable()
                     ->afterStateUpdated(function (callable $set, $state) {
-                        $set('tipo', $state ? 'Grupo' : 'Individual'); // Cambia automáticamente el tipo
+                        $set('tipo', $state ? 'Grupo' : 'Individual');
                     })
                     ->createOptionForm([
                         Forms\Components\TextInput::make('nombre')
@@ -80,11 +79,10 @@ class InscripcionResource extends Resource
                             ->searchable()
                             ->preload()
                             ->nullable(),
-                        Forms\Components\MultiSelect::make('integrantes') // Seleccionar múltiples usuarios
+                        Forms\Components\MultiSelect::make('integrantes')
                             ->label('Integrantes')
-                            ->options(\App\Models\User::pluck('name', 'id')) // Opciones de usuarios registrados
-                            ->required()
-                            ->maxItems(4), // Límite de integrantes
+                            ->options(\App\Models\User::pluck('name', 'id'))
+                            ->required(),
                     ]),
 
                 Forms\Components\Select::make('tipo')

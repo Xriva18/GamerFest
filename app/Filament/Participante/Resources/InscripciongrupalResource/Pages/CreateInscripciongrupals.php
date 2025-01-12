@@ -4,16 +4,9 @@ namespace App\Filament\Participante\Resources\InscripciongrupalResource\Pages;
 
 use App\Filament\Participante\Resources\InscripciongrupalResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\CreateRecord;
 
-class ListInscripciongrupals extends ListRecords
+class CreateInscripciongrupals extends CreateRecord
 {
     protected static string $resource = InscripciongrupalResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\CreateAction::make(),
-        ];
-    }
 }
