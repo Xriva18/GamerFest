@@ -23,33 +23,63 @@ class InscripcionResource extends Resource
 
     public static function form(Forms\Form $form): Forms\Form
     {
-        // El formulario no es necesario para este caso
-        return $form->schema([]);
+        return $form
+            ->schema([
+                Forms\Components\TextInput::make('usuario')
+                    ->label('Usuario')
+                    ->default(Auth::user()->name . ' ' . Auth::user()->apellido)
+                    ->disabled()
+                    ->required(),
+
+                Forms\Components\Select::make('juego_id')
+                    ->label('Nombre del Juego')
+                    ->relationship('juego', 'nombre')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+
+                Forms\Components\TextInput::make('tipo')
+                    ->label('Tipo de inscripción')
+                    ->default('Individual')
+                    ->disabled()
+                    ->required(),
+
+                Forms\Components\TextInput::make('estado_pago')
+                    ->label('Estado del Pago')
+                    ->default('Pendiente')
+                    ->disabled()
+                    ->required(),
+
+                Forms\Components\FileUpload::make('imagen_comprobante')
+                    ->label('Comprobante de Pago')
+                    ->disk('public')
+                    ->directory('comprobantes')
+                    ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->query(fn () => Inscripcion::where('usuario_id', Auth::id())) // Filtra por usuario actual
+            ->query(fn () => Inscripcion::where('usuario_id', Auth::id()))
             ->columns([
-    
                 Tables\Columns\ImageColumn::make('juego.imagen')
-                    ->label('')
-                    ->disk('s3') // Cambia el disco si es necesario
-                    ->size(60) // Tamaño de la miniatura
-                    ->url(fn ($record) => $record->juego->imagen ? Storage::url($record->juego->imagen) : null) // Genera la URL si está disponible
-                    ->openUrlInNewTab(), // Permite abrir la imagen en una nueva pestaña
-    
+                ->disk('public')
+                ->size(60)
+                ->label('') // Eliminamos el título de la columna
+                ->url(fn ($record) => $record->juego->imagen ? Storage::url($record->juego->imagen) : null)
+                ->openUrlInNewTab(),            
+
                 Tables\Columns\TextColumn::make('juego.nombre')
                     ->label('Juego')
                     ->sortable()
                     ->searchable(),
-    
+
                 Tables\Columns\TextColumn::make('tipo')
                     ->label('Tipo de inscripción')
                     ->sortable()
                     ->searchable(),
-    
+
                 Tables\Columns\BadgeColumn::make('estado_pago')
                     ->label('Estado del Pago')
                     ->colors([
@@ -59,12 +89,17 @@ class InscripcionResource extends Resource
                     ])
                     ->sortable()
                     ->searchable(),
+
+                Tables\Columns\ImageColumn::make('imagen_comprobante')
+                    ->label('Comprobante de Pago')
+                    ->disk('public')
+                    ->size(60)
+                    ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
+                    ->openUrlInNewTab(),
             ])
-            ->filters([
-                // Si necesitas filtros adicionales, puedes configurarlos aquí
-            ])
-            ->actions([]) // Sin acciones como editar o ver
-            ->bulkActions([]); // Deshabilitar acciones masivas
+            ->filters([])
+            ->actions([])
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
@@ -76,6 +111,8 @@ class InscripcionResource extends Resource
     {
         return [
             'index' => Pages\ListInscripcions::route('/'),
+            'create' => Pages\CreateInscripcion::route('/create'),
+            'edit' => Pages\EditInscripcion::route('/{record}/edit'),
         ];
     }
 }
