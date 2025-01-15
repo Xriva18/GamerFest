@@ -61,14 +61,14 @@ class InscripcionResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(fn () => Inscripcion::where('usuario_id', Auth::id()))
+            ->query(fn() => Inscripcion::where('usuario_id', Auth::id()))
             ->columns([
                 Tables\Columns\ImageColumn::make('juego.imagen')
-                ->disk('public')
-                ->size(60)
-                ->label('') // Eliminamos el título de la columna
-                ->url(fn ($record) => $record->juego->imagen ? Storage::url($record->juego->imagen) : null)
-                ->openUrlInNewTab(),            
+                    ->disk('s3')
+                    ->size(60)
+                    ->label('') // Eliminamos el título de la columna
+                    ->url(fn($record) => $record->juego->imagen ? Storage::url($record->juego->imagen) : null)
+                    ->openUrlInNewTab(),
 
                 Tables\Columns\TextColumn::make('juego.nombre')
                     ->label('Juego')
@@ -92,9 +92,9 @@ class InscripcionResource extends Resource
 
                 Tables\Columns\ImageColumn::make('imagen_comprobante')
                     ->label('Comprobante de Pago')
-                    ->disk('public')
+                    ->disk('s3')
                     ->size(60)
-                    ->url(fn ($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
+                    ->url(fn($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
                     ->openUrlInNewTab(),
             ])
             ->filters([])
