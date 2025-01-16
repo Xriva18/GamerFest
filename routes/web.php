@@ -8,7 +8,6 @@ use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-
 /*Route::get('/', function (Request $request) {
     // Cerrar la sesión del usuario
     Auth::logout();
@@ -39,6 +38,50 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin', function () {
+        $user = Auth::user();
+
+        // Validar el rol_id para el panel de administrador
+        if ($user->rol_id !== 1) {
+            abort(403, 'No tienes permiso para acceder al panel de administrador.');
+        }
+
+        // Redirigir al path del PanelProvider correspondiente
+        return redirect('/administrador'); // Path configurado en AdminPanelProvider
+    })->name('admin.panel');
+
+    Route::get('/coordinador', function () {
+        $user = Auth::user();
+
+        // Validar el rol_id para el panel de coordinador
+        if ($user->rol_id !== 2) {
+            abort(403, 'No tienes permiso para acceder al panel de coordinador.');
+        }
+
+        return redirect('/coordinadorJuego'); // Path configurado en CoordinadorPanelProvider
+    })->name('coordinador.panel');
+
+    Route::get('/tesorero', function () {
+        $user = Auth::user();
+
+        // Validar el rol_id para el panel de tesorero
+        if ($user->rol_id !== 3) {
+            abort(403, 'No tienes permiso para acceder al panel de tesorero.');
+        }
+
+        return redirect('/tesoreroJuego'); // Path configurado en TesoreroPanelProvider
+    })->name('tesorero.panel');
+
+    Route::get('/participante', function () {
+        $user = Auth::user();
+
+        // Validar el rol_id para el panel de participante
+        if ($user->rol_id !== 4) {
+            abort(403, 'No tienes permiso para acceder al panel de participante.');
+        }
+
+        return redirect('/participanteJuego'); // Path configurado en ParticipantePanelProvider
+    })->name('participante.panel');
 });
 
 Route::get('/universidades', [UniversidadController::class, 'index'])->name('universidades.index');
