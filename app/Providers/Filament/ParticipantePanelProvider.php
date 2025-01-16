@@ -18,14 +18,25 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class ParticipantePanelProvider extends PanelProvider
 {
+    public function canView($user): bool
+    {
+        // Verificar el rol_id del modelo Users
+        if ($user->rol_id !== 4) {
+            throw new AuthorizationException('No tienes permiso para acceder al panel de participante.');
+        }
+        dd($user);
+        return true;
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->id('participante')
-            ->path('participante')
+            ->path('participanteJuego')
             ->colors([
                 'primary' => Color::Blue,
             ])

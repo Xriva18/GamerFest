@@ -18,14 +18,25 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class TesoreroPanelProvider extends PanelProvider
 {
+    public function canView($user): bool
+    {
+        // Verificar el rol_id del modelo Users
+        if ($user->rol_id !== 3) {
+            throw new AuthorizationException('No tienes permiso para acceder al panel de tesorero.');
+        }
+        dd($user);
+        return true;
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->id('tesorero')
-            ->path('tesorero')
+            ->path('tesoreroJuego')
             ->colors([
                 'primary' => Color::Blue,
             ])
