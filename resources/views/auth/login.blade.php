@@ -12,7 +12,7 @@
 
             <!-- Email Address -->
             <div class="flex items-center mb-2 mt-3">
-                <x-input-label for="email" :value="__('Email:')" class="w-1/4 mr-4" />
+                <x-input-label for="email" :value="__('Correo:')" class="w-1/4 mr-4" />
                 <div class="w-3/4">
                     <x-text-input id="email" class="block w-full rounded" type="email" name="email" :value="old('email')"
                         required autofocus autocomplete="username" />
@@ -53,7 +53,7 @@
 
 
             <x-primary-button class="my-3">
-                {{ __('Log in') }}
+                {{ __('Ingrese') }}
             </x-primary-button>
             </div>
         </form>

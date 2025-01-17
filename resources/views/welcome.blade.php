@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <!-- Botón Login alineado a la derecha -->
-                <a class="btn-login" href="{{ url('/login') }}">Acceso</a>
+                <a class="btn-login" href="{{ url('/login') }}">Ingrese</a>
             </div>
         </div>
     </nav>
