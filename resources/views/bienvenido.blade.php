@@ -11,7 +11,7 @@
 
             <div class="flex justify-center">
                 <x-primary-button onclick="window.location.href='{{ route('login') }}'">
-                    {{ __('Login') }}
+                    {{ __('Acceso') }}
                 </x-primary-button>
             </div>
         </div>

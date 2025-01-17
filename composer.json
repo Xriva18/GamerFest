@@ -7,11 +7,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "caouecs/laravel-lang": "*",
         "filament/filament": "^3.2",
         "jeffgreco13/filament-breezy": "^2.4",
+        "laravel-lang/lang": "^15.11",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
-        "league/flysystem-aws-s3-v3": "3.0"
+        "league/flysystem-aws-s3-v3": "3.0",
+        "mcamara/laravel-localization": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
