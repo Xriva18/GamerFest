@@ -72,7 +72,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-secondary-button href="{{ url('/login') }}">
-                    {{ __('Login') }}
+                    {{ __('Ingrese') }}
                 </x-secondary-button>
 
                 <x-primary-button class="ml-4 ">
