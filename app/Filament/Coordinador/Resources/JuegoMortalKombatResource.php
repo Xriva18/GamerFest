@@ -2,8 +2,8 @@
 
 namespace App\Filament\Coordinador\Resources;
 
-use App\Filament\Coordinador\Resources\JuegoMarioKartResource\Pages;
-use App\Filament\Coordinador\Resources\JuegoMarioKartResource\RelationManagers;
+use App\Filament\Coordinador\Resources\JuegoMortalKombatResource\Pages;
+use App\Filament\Coordinador\Resources\JuegoMortalKombatResource\RelationManagers;
 use App\Models\BaseCoordinadorJuego;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,27 +13,27 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class JuegoMarioKartResource extends Resource
+class JuegoMortalKombatResource extends Resource
 {
     protected static ?string $model = BaseCoordinadorJuego::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-puzzle-piece';
 
-    protected static ?string $label = 'Mario Kart';
-    protected static ?string $pluralLabel = 'Mario Kart';
+    protected static ?string $label = 'Mortal Kombat';
+    protected static ?string $pluralLabel = 'Mortal Kombat';
 
 
 
     public static function canViewAny(): bool
     {
         // Solo el coordinador con ID 12 puede acceder
-        return auth()->check() && auth()->user()->id === 8;
+        return auth()->check() && auth()->user()->id === 13;
     }
 
     public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
     {
         // Mostrar solo el juego con ID 1
-        return parent::getEloquentQuery()->where('id', 1);
+        return parent::getEloquentQuery()->where('id', 6);
     }
 
     public static function form(Form $form): Form
@@ -150,9 +150,9 @@ class JuegoMarioKartResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListJuegoMarioKarts::route('/'),
-            'create' => Pages\CreateJuegoMarioKart::route('/create'),
-            'edit' => Pages\EditJuegoMarioKart::route('/{record}/edit'),
+            'index' => Pages\ListJuegoMortalKombats::route('/'),
+            'create' => Pages\CreateJuegoMortalKombat::route('/create'),
+            'edit' => Pages\EditJuegoMortalKombat::route('/{record}/edit'),
         ];
     }
 }

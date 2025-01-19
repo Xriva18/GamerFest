@@ -15,5 +15,6 @@ class ListMarioJugadores extends ListRecords
         /*return [
             Actions\CreateAction::make(),
         ];*/
+
     }
 }

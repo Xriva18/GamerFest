@@ -2,9 +2,9 @@
 
 namespace App\Filament\Coordinador\Resources;
 
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\Pages;
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\RelationManagers;
-use App\Models\MarioJugadores;
+use App\Filament\Coordinador\Resources\Ea25JugadoresResource\Pages;
+use App\Filament\Coordinador\Resources\Ea25JugadoresResource\RelationManagers;
+use App\Models\Ea25Jugadores;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MarioJugadoresResource extends Resource
+class Ea25JugadoresResource extends Resource
 {
-    protected static ?string $model = MarioJugadores::class;
+    protected static ?string $model = Ea25Jugadores::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-users';
 
@@ -27,7 +27,7 @@ class MarioJugadoresResource extends Resource
     public static function canViewAny(): bool
     {
         // Solo el coordinador con ID 12 puede acceder
-        return auth()->check() && auth()->user()->id === 8;
+        return auth()->check() && auth()->user()->id === 12;
     }
 
 
@@ -72,9 +72,9 @@ class MarioJugadoresResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMarioJugadores::route('/'),
-            //'create' => Pages\CreateMarioJugadores::route('/create'),
-            //'edit' => Pages\EditMarioJugadores::route('/{record}/edit'),
+            'index' => Pages\ListEa25Jugadores::route('/'),
+            //'create' => Pages\CreateEa25Jugadores::route('/create'),
+            //'edit' => Pages\EditEa25Jugadores::route('/{record}/edit'),
         ];
     }
 }

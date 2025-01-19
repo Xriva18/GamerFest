@@ -2,9 +2,9 @@
 
 namespace App\Filament\Coordinador\Resources;
 
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\Pages;
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\RelationManagers;
-use App\Models\MarioJugadores;
+use App\Filament\Coordinador\Resources\MortalKombatJugadoresResource\Pages;
+use App\Filament\Coordinador\Resources\MortalKombatJugadoresResource\RelationManagers;
+use App\Models\MortalKombatJugadores;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MarioJugadoresResource extends Resource
+class MortalKombatJugadoresResource extends Resource
 {
-    protected static ?string $model = MarioJugadores::class;
+    protected static ?string $model = MortalKombatJugadores::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-users';
 
@@ -27,7 +27,7 @@ class MarioJugadoresResource extends Resource
     public static function canViewAny(): bool
     {
         // Solo el coordinador con ID 12 puede acceder
-        return auth()->check() && auth()->user()->id === 8;
+        return auth()->check() && auth()->user()->id === 13;
     }
 
 
@@ -72,9 +72,9 @@ class MarioJugadoresResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMarioJugadores::route('/'),
-            //'create' => Pages\CreateMarioJugadores::route('/create'),
-            //'edit' => Pages\EditMarioJugadores::route('/{record}/edit'),
+            'index' => Pages\ListMortalKombatJugadores::route('/'),
+            //'create' => Pages\CreateMortalKombatJugadores::route('/create'),
+            //'edit' => Pages\EditMortalKombatJugadores::route('/{record}/edit'),
         ];
     }
 }
