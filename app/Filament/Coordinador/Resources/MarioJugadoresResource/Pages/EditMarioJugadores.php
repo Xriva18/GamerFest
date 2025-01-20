@@ -10,10 +10,10 @@ class EditMarioJugadores extends EditRecord
 {
     protected static string $resource = MarioJugadoresResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
-        /*return [
+        return [
             Actions\DeleteAction::make(),
-        ];*/
-    }
+        ];
+    }*/
 }

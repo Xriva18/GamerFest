@@ -2,8 +2,8 @@
 
 namespace App\Filament\Coordinador\Resources;
 
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\Pages;
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\RelationManagers;
+use App\Filament\Coordinador\Resources\JustDanceJugadoresResource\Pages;
+use App\Filament\Coordinador\Resources\JustDanceJugadoresResource\RelationManagers;
 use App\Models\Participante;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MarioJugadoresResource extends Resource
+class JustDanceJugadoresResource extends Resource
 {
     protected static ?string $model = Participante::class;
 
@@ -27,9 +27,8 @@ class MarioJugadoresResource extends Resource
     public static function canViewAny(): bool
     {
         // Solo el coordinador con ID 12 puede acceder
-        return auth()->check() && auth()->user()->id === 8;
+        return auth()->check() && auth()->user()->id === 11;
     }
-
     public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
     {
         // Mostrar solo el juego con ID 1
@@ -101,9 +100,9 @@ class MarioJugadoresResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMarioJugadores::route('/'),
-            //'create' => Pages\CreateMarioJugadores::route('/create'),
-            //'edit' => Pages\EditMarioJugadores::route('/{record}/edit'),
+            'index' => Pages\ListJustDanceJugadores::route('/'),
+            //'create' => Pages\CreateJustDanceJugadores::route('/create'),
+            //'edit' => Pages\EditJustDanceJugadores::route('/{record}/edit'),
         ];
     }
 }

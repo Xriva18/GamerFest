@@ -2,8 +2,8 @@
 
 namespace App\Filament\Coordinador\Resources;
 
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\Pages;
-use App\Filament\Coordinador\Resources\MarioJugadoresResource\RelationManagers;
+use App\Filament\Coordinador\Resources\ValorantJugadoresResource\Pages;
+use App\Filament\Coordinador\Resources\ValorantJugadoresResource\RelationManagers;
 use App\Models\Participante;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MarioJugadoresResource extends Resource
+class ValorantJugadoresResource extends Resource
 {
     protected static ?string $model = Participante::class;
 
@@ -27,15 +27,14 @@ class MarioJugadoresResource extends Resource
     public static function canViewAny(): bool
     {
         // Solo el coordinador con ID 12 puede acceder
-        return auth()->check() && auth()->user()->id === 8;
+        return auth()->check() && auth()->user()->id === 16;
     }
 
     public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
     {
         // Mostrar solo el juego con ID 1
-        return parent::getEloquentQuery()->where('juego_id', 5);
+        return parent::getEloquentQuery()->where('juego_id', 3);
     }
-
 
     public static function form(Form $form): Form
     {
@@ -91,19 +90,12 @@ class MarioJugadoresResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMarioJugadores::route('/'),
-            //'create' => Pages\CreateMarioJugadores::route('/create'),
-            //'edit' => Pages\EditMarioJugadores::route('/{record}/edit'),
+            'index' => Pages\ListValorantJugadores::route('/'),
+            //'create' => Pages\CreateValorantJugadores::route('/create'),
+            //'edit' => Pages\EditValorantJugadores::route('/{record}/edit'),
         ];
     }
 }
