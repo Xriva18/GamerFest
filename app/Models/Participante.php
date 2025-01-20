@@ -11,6 +11,8 @@ class Participante extends Model
     // Define la tabla en caso de que no siga la convención plural
     protected $table = 'participantes';
 
+    public $timestamps = false;
+
     // La clave primaria es "id" y es autoincremental (bigint, por ejemplo)
     protected $primaryKey = 'id';
     public $incrementing = true;
