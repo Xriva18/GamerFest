@@ -7,6 +7,7 @@ use App\Http\Controllers\UniversidadController;
 use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\EnfrentamientoController;
 
 /*Route::get('/', function (Request $request) {
     // Cerrar la sesión del usuario
@@ -99,5 +100,10 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])
     ->name('login');
 
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+
+Route::get('/generar-enfrentamientos', [EnfrentamientoController::class, 'generarEnfrentamientos'])
+    ->name('enfrentamientos.generar');
+
 
 require __DIR__ . '/auth.php';

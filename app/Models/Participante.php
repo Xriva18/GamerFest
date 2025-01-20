@@ -3,16 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Participante extends Model
 {
-    use HasFactory;
-    public $timestamps = false;
-    // Nombre de la tabla
+    // Define la tabla en caso de que no siga la convención plural
     protected $table = 'participantes';
 
-    // Campos asignables en masa
+    // La clave primaria es "id" y es autoincremental (bigint, por ejemplo)
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+
+    // Asumimos que usamos casts para campos numéricos
+    protected $casts = [
+        'id' => 'integer',
+        'usuario_id' => 'integer',
+        'juego_id' => 'integer',
+        'equipo_id' => 'integer',
+    ];
+
+    // Los campos que pueden asignarse en masa
     protected $fillable = [
         'usuario_id',
         'juego_id',
@@ -21,30 +32,27 @@ class Participante extends Model
         'estado_juego',
     ];
 
-    // Valores predeterminados para atributos
-    protected $attributes = [
-        'estado_juego' => 'jugando',
-    ];
-
-    /**
-     * Relaciones
-     */
-
-    // Relación con el modelo User (usuarios)
-    public function usuario()
-    {
-        return $this->belongsTo(User::class, 'usuario_id');
-    }
-
-    // Relación con el modelo Juego
-    public function juego()
+    // Ejemplo de relación: Un participante pertenece a un juego
+    public function juego(): BelongsTo
     {
         return $this->belongsTo(Juego::class, 'juego_id');
     }
 
-    // Relación con el modelo Equipo
-    public function equipo()
+    // Ejemplo de relación: Un participante tiene muchos enfrentamientos como inscripcion1
+    public function enfrentamientosComoInscripcion1(): HasMany
     {
-        return $this->belongsTo(Equipo::class, 'equipo_id');
+        return $this->hasMany(Enfrentamiento::class, 'inscripcion_1_id');
+    }
+
+    // Ejemplo de relación: Un participante tiene muchos enfrentamientos como inscripcion2
+    public function enfrentamientosComoInscripcion2(): HasMany
+    {
+        return $this->hasMany(Enfrentamiento::class, 'inscripcion_2_id');
+    }
+
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 }
