@@ -49,4 +49,10 @@ class Participante extends Model
     {
         return $this->hasMany(Enfrentamiento::class, 'inscripcion_2_id');
     }
+
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }

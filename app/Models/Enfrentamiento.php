@@ -35,19 +35,23 @@ class Enfrentamiento extends Model
     /**
      * Relación con el modelo Participante (jugador1).
      */
-    public function jugador1()
+    /**
+     * Relación con el modelo Participante para el jugador 1.
+     */
+    public function participante1()
     {
         return $this->belongsTo(Participante::class, 'jugador1');
     }
 
     /**
-     * Relación con el modelo Participante (jugador2).
+     * Relación con el modelo Participante para el jugador 2.
      */
-    public function jugador2()
+    public function participante2()
     {
         return $this->belongsTo(Participante::class, 'jugador2');
     }
 
+    // ...
     /**
      * Relación con el modelo Equipo (equipo1).
      */

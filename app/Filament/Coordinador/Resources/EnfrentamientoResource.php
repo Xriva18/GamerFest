@@ -48,11 +48,37 @@ class EnfrentamientoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->label('ID')->sortable(),
-                Tables\Columns\TextColumn::make('jugador1')->label('Jugador 1')->sortable(),
-                Tables\Columns\TextColumn::make('jugador2')->label('Jugador 2')->sortable(),
-                Tables\Columns\TextColumn::make('equipo1')->label('Equipo 1')->sortable()->formatStateUsing(fn($state) => \App\Models\Equipo::find($state)?->nombre),
-                Tables\Columns\TextColumn::make('equipo2')->label('Equipo 2')->sortable()->formatStateUsing(fn($state) => \App\Models\Equipo::find($state)?->nombre),
-                Tables\Columns\TextColumn::make('juego_id')->label('Juego')->sortable()->formatStateUsing(fn($state) => \App\Models\Juego::find($state)?->nombre),
+                Tables\Columns\TextColumn::make('jugador1')->label('Jugador 1')
+                    ->sortable()
+                    ->formatStateUsing(function ($state, $record) {
+                        // Se usa la relación "participante1"
+                        $participante = $record->participante1;
+                        if ($participante && $participante->usuario) {
+                            return $participante->usuario->name . ' ' . $participante->usuario->apellido;
+                        }
+                        return 'No asignado';
+                    }),
+                Tables\Columns\TextColumn::make('jugador2')->label('Jugador 2')
+                    ->sortable()
+                    ->formatStateUsing(function ($state, $record) {
+                        // Se usa la relación "participante2"
+                        $participante = $record->participante2;
+                        if ($participante && $participante->usuario) {
+                            return $participante->usuario->name . ' ' . $participante->usuario->apellido;
+                        }
+                        return 'No asignado';
+                    }),
+                Tables\Columns\TextColumn::make('equipo1')->label('Equipo 1')
+                    ->sortable()
+                    ->formatStateUsing(fn($state) => \App\Models\Equipo::find($state)?->nombre),
+                Tables\Columns\TextColumn::make('equipo2')
+                    ->label('Equipo 2')
+                    ->sortable()
+                    ->formatStateUsing(fn($state) => \App\Models\Equipo::find($state)?->nombre),
+                Tables\Columns\TextColumn::make('juego_id')
+                    ->label('Juego')
+                    ->sortable()
+                    ->formatStateUsing(fn($state) => \App\Models\Juego::find($state)?->nombre),
             ])
             ->filters([])
             ->actions([])
