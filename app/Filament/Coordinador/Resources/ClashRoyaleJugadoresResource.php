@@ -4,7 +4,7 @@ namespace App\Filament\Coordinador\Resources;
 
 use App\Filament\Coordinador\Resources\ClashRoyaleJugadoresResource\Pages;
 use App\Filament\Coordinador\Resources\ClashRoyaleJugadoresResource\RelationManagers;
-use App\Models\ClashRoyaleJugadores;
+use App\Models\Participante;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ClashRoyaleJugadoresResource extends Resource
 {
-    protected static ?string $model = ClashRoyaleJugadores::class;
+    protected static ?string $model = Participante::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-users';
 
@@ -29,31 +29,61 @@ class ClashRoyaleJugadoresResource extends Resource
         // Solo el coordinador con ID 12 puede acceder
         return auth()->check() && auth()->user()->id === 10;
     }
-
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        // Mostrar solo el juego con ID 1
+        return parent::getEloquentQuery()->where('juego_id', 4);
+    }
 
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                //
+        return $form->schema([
+            Forms\Components\Select::make('estado_juego')
+                ->label('Estado de Participación')
+                ->options([
+                    'jugando' => 'Jugando',
+                    'Ganador' => 'Ganador',
+                    'Perdedor' => 'Perdedor',
+                ])
+                ->required()
+                ->default('jugando')
+                ->visible(fn (string $context) => $context === 'edit'), // Solo visible en el contexto de edición
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+
             ->columns([
-                Tables\Columns\TextColumn::make('id')->label('ID'),
-                Tables\Columns\TextColumn::make('jugador_nombre_completo')->label('Nombre Completo')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('equipo_nombre')->label('Equipo')->sortable()->searchable(),
+                //Tables\Columns\TextColumn::make('id')->label('ID'),
+                Tables\Columns\TextColumn::make('usuario_id')
+                ->label('Jugador')
+                ->sortable()
+                ->searchable()
+                ->formatStateUsing(fn ($record) => $record->usuario->name . ' ' . $record->usuario->apellido),
+
+
+                Tables\Columns\TextColumn::make('equipo.nombre')
+                ->label('Equipo')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\BadgeColumn::make('estado_juego')
+                ->label('Estado de Participación')
+                ->sortable()
+                ->colors([
+                    'warning' => 'jugando',     // Verde para "jugando"
+                    'success' => 'Ganador',  // Amarillo para "pendiente"
+                    'danger' => 'Perdedor',  // Rojo para "finalizado"
+                ]),
             ])
             ->defaultSort('id')
             ->filters([
                 //
             ])
             ->actions([
-                //Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

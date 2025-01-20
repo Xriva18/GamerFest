@@ -17,17 +17,17 @@ class GestionParticipanteResource extends Resource
     protected static ?string $label = 'Jugadores';
     protected static ?string $pluralLabel = 'Jugadores';
 
-    public static function canViewAny(): bool
+    /*public static function canViewAny(): bool
     {
         // Solo el coordinador con ID 12 puede acceder
         return auth()->check() && auth()->user()->id === 12;
-    }
+    }*/
 
-    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+   /* public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
     {
         // Mostrar solo el juego con ID 1
         return parent::getEloquentQuery()->where('juego_id', 1);
-    }
+    }*/
 
 
     public static function table(Tables\Table $table): Tables\Table

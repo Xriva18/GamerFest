@@ -10,10 +10,10 @@ class ListClashRoyaleJugadores extends ListRecords
 {
     protected static string $resource = ClashRoyaleJugadoresResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
-        /*return [
+        return [
             Actions\CreateAction::make(),
-        ];*/
-    }
+        ];
+    }*/
 }

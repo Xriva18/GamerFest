@@ -10,10 +10,10 @@ class ListJustDanceJugadores extends ListRecords
 {
     protected static string $resource = JustDanceJugadoresResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
-        /*return [
+        return [
             Actions\CreateAction::make(),
-        ];*/
-    }
+        ];
+    }*/
 }

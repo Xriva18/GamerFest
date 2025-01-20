@@ -10,10 +10,10 @@ class ListValorantJugadores extends ListRecords
 {
     protected static string $resource = ValorantJugadoresResource::class;
 
-    protected function getHeaderActions(): array
+   /* protected function getHeaderActions(): array
     {
-        /*return [
+        return [
             Actions\CreateAction::make(),
-        ];*/
-    }
+        ];
+    }*/
 }

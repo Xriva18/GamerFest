@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SoloAprobados extends Model
 {
-    protected $table = 'public.aprobados_view';
+    protected $table = 'public.aprobados_view_participantes';
     protected $primaryKey = 'id'; // Usa una columna de la vista como clave primaria lógica
     public $incrementing = false;
     protected $keyType = 'string';
@@ -17,5 +17,6 @@ class SoloAprobados extends Model
         'coordinador_nombre_completo',
         'equipo_nombre',
         'juego_nombre',
+        'estado_juego',
     ];
 }

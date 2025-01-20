@@ -10,10 +10,10 @@ class EditEa25Jugadores extends EditRecord
 {
     protected static string $resource = Ea25JugadoresResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
-        /*return [
+        return [
             Actions\DeleteAction::make(),
-        ];*/
-    }
+        ];
+    }*/
 }

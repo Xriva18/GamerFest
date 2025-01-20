@@ -10,10 +10,10 @@ class EditClashRoyaleJugadores extends EditRecord
 {
     protected static string $resource = ClashRoyaleJugadoresResource::class;
 
-    protected function getHeaderActions(): array
+    /*protected function getHeaderActions(): array
     {
-        /*return [
+        return [
             Actions\DeleteAction::make(),
-        ];*/
-    }
+        ];
+    }*/
 }
