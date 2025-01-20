@@ -3,15 +3,12 @@
 namespace App\Filament\Coordinador\Resources;
 
 use App\Filament\Coordinador\Resources\EnfrentamientoResource\Pages;
-use App\Filament\Coordinador\Resources\EnfrentamientoResource\RelationManagers;
 use App\Models\Enfrentamiento;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EnfrentamientoResource extends Resource
 {
@@ -23,7 +20,26 @@ class EnfrentamientoResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('jugador1')
+                    ->label('Jugador 1')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\TextInput::make('jugador2')
+                    ->label('Jugador 2')
+                    ->numeric()
+                    ->nullable(),
+                Forms\Components\TextInput::make('equipo1')
+                    ->label('Equipo 1')
+                    ->numeric()
+                    ->nullable(),
+                Forms\Components\TextInput::make('equipo2')
+                    ->label('Equipo 2')
+                    ->numeric()
+                    ->nullable(),
+                Forms\Components\TextInput::make('juego_id')
+                    ->label('Juego')
+                    ->numeric()
+                    ->required(),
             ]);
     }
 
@@ -31,23 +47,21 @@ class EnfrentamientoResource extends Resource
     {
         return $table
             ->columns([
-                // Ejemplo: 
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('juego_id'),
-                Tables\Columns\TextColumn::make('inscripcion_1_id'),
-                Tables\Columns\TextColumn::make('inscripcion_2_id'),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime(),
+                Tables\Columns\TextColumn::make('id')->label('ID')->sortable(),
+                Tables\Columns\TextColumn::make('jugador1')->label('Jugador 1')->sortable(),
+                Tables\Columns\TextColumn::make('jugador2')->label('Jugador 2')->sortable(),
+                Tables\Columns\TextColumn::make('equipo1')->label('Equipo 1')->sortable()->formatStateUsing(fn($state) => \App\Models\Equipo::find($state)?->nombre),
+                Tables\Columns\TextColumn::make('equipo2')->label('Equipo 2')->sortable()->formatStateUsing(fn($state) => \App\Models\Equipo::find($state)?->nombre),
+                Tables\Columns\TextColumn::make('juego_id')->label('Juego')->sortable()->formatStateUsing(fn($state) => \App\Models\Juego::find($state)?->nombre),
             ])
-            ->filters([
-                //
-            ]);
+            ->filters([])
+            ->actions([])
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

@@ -3,50 +3,72 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Enfrentamiento extends Model
 {
-    // Define la tabla en caso de que no siga la convención plural
+    // Nombre de la tabla
     protected $table = 'enfrentamientos';
 
-    // La clave primaria es "id" y es autoincremental (bigserial)
+    // Llave primaria
     protected $primaryKey = 'id';
+
+    // Indicamos que la clave primaria es autoincremental
     public $incrementing = true;
 
-    // Desactivamos el manejo de timestamps automáticos si sólo se usa updated_at
+    // Tipo de la clave primaria
+    protected $keyType = 'int';
+
+    // Indicar si el modelo utiliza marcas de tiempo
     public $timestamps = false;
 
-    protected $casts = [
-        'id'              => 'integer',
-        'juego_id'        => 'integer',
-        'inscripcion_1_id' => 'integer',
-        'inscripcion_2_id' => 'integer',
-        'updated_at'      => 'datetime',
-    ];
-
-    // Campos asignables en masa
+    // Atributos que se pueden asignar masivamente
     protected $fillable = [
+        'jugador1',
+        'jugador2',
+        'equipo1',
+        'equipo2',
         'juego_id',
-        'inscripcion_1_id',
-        'inscripcion_2_id',
-        'updated_at'
     ];
 
-    // Relaciones: Un enfrentamiento pertenece a un juego
-    public function juego(): BelongsTo
+    // Relaciones
+
+    /**
+     * Relación con el modelo Participante (jugador1).
+     */
+    public function jugador1()
+    {
+        return $this->belongsTo(Participante::class, 'jugador1');
+    }
+
+    /**
+     * Relación con el modelo Participante (jugador2).
+     */
+    public function jugador2()
+    {
+        return $this->belongsTo(Participante::class, 'jugador2');
+    }
+
+    /**
+     * Relación con el modelo Equipo (equipo1).
+     */
+    public function equipo1()
+    {
+        return $this->belongsTo(Equipo::class, 'equipo1');
+    }
+
+    /**
+     * Relación con el modelo Equipo (equipo2).
+     */
+    public function equipo2()
+    {
+        return $this->belongsTo(Equipo::class, 'equipo2');
+    }
+
+    /**
+     * Relación con el modelo Juego.
+     */
+    public function juego()
     {
         return $this->belongsTo(Juego::class, 'juego_id');
-    }
-
-    // Relaciones: Un enfrentamiento pertenece a dos participantes
-    public function inscripcion1(): BelongsTo
-    {
-        return $this->belongsTo(Participante::class, 'inscripcion_1_id');
-    }
-
-    public function inscripcion2(): BelongsTo
-    {
-        return $this->belongsTo(Participante::class, 'inscripcion_2_id');
     }
 }
