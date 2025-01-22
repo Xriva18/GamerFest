@@ -6,22 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class EquipoIntegrante extends Model
 {
-    // Nombre de la tabla en la base de datos
     protected $table = 'equipo_integrantes';
 
-    // Atributos que se pueden asignar masivamente
-    protected $fillable = [
-        'equipo_id',
-        'usuario_id',
+    protected $fillable = ['nombrequipo', 'usuario_id', 'lider_id'];
+
+    public $timestamps = false;
+
+    protected $casts = [
+        'usuario_id' => 'array',
     ];
 
-    public function equipo()
+    public function lider()
     {
-        return $this->belongsTo(Equipo::class, 'equipo_id');
-    }
-
-    public function usuario()
-    {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'lider_id');
     }
 }
