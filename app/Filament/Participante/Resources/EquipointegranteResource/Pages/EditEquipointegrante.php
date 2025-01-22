@@ -31,12 +31,15 @@ class EditEquipointegrante extends EditRecord
         $liderId = Auth::id();
         $usuarioIds = $data['usuario_id'];
 
+        // Validar que los nuevos datos de integrantes no estén vacíos
         if (empty($usuarioIds)) {
             throw new \Exception('Debe seleccionar al menos un integrante.');
         }
 
+        // Eliminar los registros actuales del equipo
         EquipoIntegrante::where('nombrequipo', $nombreEquipo)->delete();
 
+        // Insertar los nuevos integrantes
         foreach ($usuarioIds as $usuarioId) {
             EquipoIntegrante::create([
                 'nombrequipo' => $nombreEquipo,
