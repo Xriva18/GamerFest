@@ -59,15 +59,18 @@ class EquipointegranteResource extends Resource
         return $table
             ->query(
                 EquipoIntegrante::query()
-                    ->selectRaw('equipo_integrantes.id, equipo_integrantes.nombrequipo, equipo_integrantes.lider_id, STRING_AGG(users.name || \' \' || users.apellido, \', \') AS integrantes')
+                    ->selectRaw('MIN(equipo_integrantes.id) as id, nombrequipo, lider_id, STRING_AGG(users.name || \' \' || users.apellido, \', \') AS integrantes')
                     ->join('users', 'equipo_integrantes.usuario_id', '=', 'users.id')
-                    ->groupBy('equipo_integrantes.id', 'equipo_integrantes.nombrequipo', 'equipo_integrantes.lider_id')
+                    ->groupBy('nombrequipo', 'lider_id')
             )
             ->columns([
+                // Columna del nombre del equipo
                 Tables\Columns\TextColumn::make('nombrequipo')
                     ->label('Nombre del Equipo')
                     ->sortable()
                     ->searchable(),
+    
+                // Columna para el líder del equipo
                 Tables\Columns\TextColumn::make('lider.name')
                     ->label('Líder del Equipo')
                     ->getStateUsing(function ($record) {
@@ -76,6 +79,8 @@ class EquipointegranteResource extends Resource
                     })
                     ->sortable()
                     ->searchable(),
+    
+                // Columna de los integrantes (mostrar todos en una sola celda)
                 Tables\Columns\TextColumn::make('integrantes')
                     ->label('Integrantes')
                     ->getStateUsing(fn($record) => $record->integrantes ?? 'Sin Integrantes')
