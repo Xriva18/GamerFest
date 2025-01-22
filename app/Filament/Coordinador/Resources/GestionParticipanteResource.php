@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Filament\Coordinador\Resources;
 
 use App\Filament\Coordinador\Resources\GestionParticipanteResource\Pages;
@@ -14,6 +14,11 @@ class GestionParticipanteResource extends Resource
     protected static ?string $model = GestionParticipante::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-users'; // Cambiado de 'heroicon-o-collection' a un ícono disponible
+    protected static ?string $label = 'Jugadores';
+    protected static ?string $pluralLabel = 'Jugadores';
+
+    
+
 
     public static function table(Tables\Table $table): Tables\Table
     {
@@ -70,4 +75,4 @@ class GestionParticipanteResource extends Resource
             'index' => Pages\ManageGestionParticipantes::route('/'),
         ];
     }
-}
+}*/

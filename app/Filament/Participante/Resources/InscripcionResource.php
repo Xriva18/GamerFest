@@ -27,32 +27,39 @@ class InscripcionResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('usuario')
                     ->label('Usuario')
-                    ->default(Auth::user()->name . ' ' . Auth::user()->apellido)
-                    ->disabled()
-                    ->required(),
+                    ->default(Auth::user()->name . ' ' . Auth::user()->apellido) // Mostrar el nombre del usuario autenticado
+                    ->disabled() // Deshabilitar para que no sea editable
+                    ->dehydrated(false), // No enviar este campo al backend
 
                 Forms\Components\Select::make('juego_id')
                     ->label('Nombre del Juego')
                     ->relationship('juego', 'nombre')
                     ->searchable()
                     ->preload()
+                    ->placeholder('Seleccione una opción') // Placeholder para Nombre del Juego
                     ->required(),
 
-                Forms\Components\TextInput::make('tipo')
-                    ->label('Tipo de inscripción')
-                    ->default('Individual')
-                    ->disabled()
-                    ->required(),
+                // Campo oculto para el tipo de inscripción
+                Forms\Components\Hidden::make('tipo')
+                    ->default('Individual') // Valor predeterminado
+                    ->dehydrated(true), // Enviar este campo al backend
 
                 Forms\Components\TextInput::make('estado_pago')
                     ->label('Estado del Pago')
-                    ->default('Pendiente')
-                    ->disabled()
-                    ->required(),
+                    ->default('Pendiente') // Valor predeterminado
+                    ->disabled() // Deshabilitar para que no sea editable
+                    ->dehydrated(true), // Enviar este campo al backend
+
+                Forms\Components\TextInput::make('numero_comprobante')
+                    ->label('Número de Comprobante')
+                    ->placeholder('Ejemplo: 123456789') // Agregar un placeholder
+                    ->required()
+                    ->maxLength(255),
 
                 Forms\Components\FileUpload::make('imagen_comprobante')
-                    ->label('Comprobante de Pago')
-                    ->disk('public')
+                    ->label('Comprobante')
+                    ->disk('s3')
+                    ->visibility('private')
                     ->directory('comprobantes')
                     ->required(),
             ]);
@@ -90,10 +97,15 @@ class InscripcionResource extends Resource
                     ->sortable()
                     ->searchable(),
 
+                Tables\Columns\TextColumn::make('numero_comprobante')
+                    ->label('Número de Comprobante')
+                    ->sortable()
+                    ->searchable(),
+
                 Tables\Columns\ImageColumn::make('imagen_comprobante')
-                    ->label('Comprobante de Pago')
-                    ->disk('s3')
+                    ->label('Comprobante')
                     ->size(60)
+                    ->disk('s3')
                     ->url(fn($record) => $record->imagen_comprobante ? Storage::url($record->imagen_comprobante) : null)
                     ->openUrlInNewTab(),
             ])

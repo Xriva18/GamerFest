@@ -44,14 +44,22 @@ class inscripcion extends Model
     {
         parent::boot();
 
-        static::saving(function ($inscripcion) {
+        static::creating(function ($inscripcion) {
+            $inscripcion->usuario_id = $inscripcion->usuario_id ?? auth()->id(); // Asignar usuario autenticado si no llega del formulario
+            $inscripcion->tipo = $inscripcion->tipo ?? 'Individual'; // Valor predeterminado
+            $inscripcion->estado_pago = $inscripcion->estado_pago ?? 'Pendiente'; // Valor predeterminado
+        });
+    
+        static::creating(function ($inscripcion) {
+            // Asignar automáticamente el usuario autenticado
+            $inscripcion->usuario_id = auth()->id();
+    
             // Validar duplicados
             if (Inscripcion::where('usuario_id', $inscripcion->usuario_id)
                 ->where('juego_id', $inscripcion->juego_id)
-                ->where('tipo', $inscripcion->tipo)
                 ->exists()) {
-                throw new \Exception('El usuario ya está inscrito en este juego con el tipo seleccionado.');
+                throw new \Exception('El usuario ya está inscrito en este juego.');
             }
         });
-    }
+    }    
 }

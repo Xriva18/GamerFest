@@ -7,7 +7,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "caouecs/laravel-lang": "*",
         "filament/filament": "^3.2",
         "jeffgreco13/filament-breezy": "^2.4",
         "laravel-lang/lang": "^15.11",

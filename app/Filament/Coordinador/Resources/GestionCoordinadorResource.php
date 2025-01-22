@@ -1,5 +1,5 @@
 <?php
-
+/* 
 namespace App\Filament\Coordinador\Resources;
 use App\Models\Juego;
 use App\Models\CoordinadorTemporal;
@@ -84,4 +84,4 @@ class GestionCoordinadorResource extends Resource
 
         ];
     }
-}
+}*/
